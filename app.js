@@ -1,6 +1,8 @@
 var express = require("express");
 var app = express();
 
+app.use(express.static('stylesheets'));
+
 /* -- Start -->  Temporary data for pages <-- Start -- */
 
 var projectlist = [

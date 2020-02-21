@@ -1,3 +1,5 @@
+<%- include("partials/header") %>
+
 <h1>Dit is de pagina waar alle projecten op te zien zijn</h1>
 
 <ul>
@@ -15,8 +17,10 @@
 
     <% for (i=0; i<projectlist.length; i++){
         %>
-            <%- include("partials/projectblock", {project: projectlist[i]})%>  
+            <%- include("partials/projectblock", {project: projectlist[i], itemnr: i})%>  
         <%
         }
     %>
 
+
+<%- include("partials/header") %>
