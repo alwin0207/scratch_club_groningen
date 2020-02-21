@@ -10,17 +10,16 @@
     }
 %>
 </ul>
-
-    <%- include("partials/projectblockproto", {projectlist: projectlist})%>    
-
+  
 
 
+    <div id="projectscontainer" class="grid_a">
     <% for (i=0; i<projectlist.length; i++){
         %>
             <%- include("partials/projectblock", {project: projectlist[i], itemnr: i})%>  
         <%
         }
     %>
+    </div>
 
-
-<%- include("partials/header") %>
+<%- include("partials/footer") %>
