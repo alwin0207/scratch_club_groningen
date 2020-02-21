@@ -1,18 +1,18 @@
 <div>
     <div class="title_projectblock">
-        <h1>Hallo, ik wordt de titel.</h1>
+        <h1><%= project.projectName %></h1>
     </div>
     <div class="info_projectblock">
         <h1>Hier komt mijn data</h1>
         <ul>
-            <li><span>Naam:</span><span>content</span></li>
-            <li><span>Leeftijd:</span><span>content</span></li>
-            <li><span>categorie:</span><span>content</span></li>
-            <li><span>Misc:</span><span>content</span></li>
+            <li><span>Naam:</span><span><%=project.name %></span></li>
+            <li><span>Leeftijd:</span><span><%=project.age%></span></li>
+            <li><span>categorie:</span><span>De categorie</span></li>
+            <li><span>Misc:</span><span>Andere info</span></li>
         </ul>
     </div>
     <div class="image_projectblock">
-        <h1>Hier komt een image</h1>
+        <h1><%=project.image%></h1>
     </div>
     <div class="description_projectblock">
         <p>Een custom description of the project</p>
