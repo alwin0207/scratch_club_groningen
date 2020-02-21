@@ -1,0 +1,26 @@
+Idee voor eerste project
+
+Ik kan een website maken voor de volgende onderdelen:
+
+1. Oefenopdrachten voor beginnende programmeurs.
+2. Oefenopdrachten voor kinderen.
+3. Leerstrategie voor mensen.
+4. Een verzameling van creaties van kinderen in scratch.
+5. Een herhaling van opdrachten bij de groep.
+
+Wat me het tofst lijkt is een verzamelpagina voor programma’s gemaakt in scratch.
+
+Wat moet er op deze pagina komen?
+
+1. Naam van het kind.
+2. Een preview van het programma.
+3. Een format voor instructies naar andere kinderen.
+4. Een lijst met gebruikte codekaarten.
+5. Comments.
+6. Een upload functie.
+7. Een review deel voor ouders.
+8. Automatische ontkoppeling van ouders op volwassen leeftijd. (????)
+9. Een bewaar mijn privacy optie? (?????)
+10. Een categorie van creatie.
+11. Een how to do it invulschema. (Ook met plaatjes ipv tekst)
+12. Een hulpprogramma om scratch te downloaden.
