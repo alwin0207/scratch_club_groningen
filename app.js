@@ -43,7 +43,7 @@ app.get("/projectspage", function(req, res){
 app.post("/add_project", function(req, res){
     console.log(req.body);
     addProject(req.body);
-    res.render("projectspage.ejs",{projectlist: projectlist});
+    res.redirect("/projectspage");
 });
 
 

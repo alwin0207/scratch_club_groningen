@@ -49,6 +49,56 @@
     grid-column: 10/ span 4; 
 }
 
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top:0;
+    width: 100vw;
+    background-color: green;
+    height: 40px;
+}
+
+.homeless{
+    position:relative;
+    margin-right: 50px;
+    background-color: transparent;
+}
+
+.navbar a{
+    display: block;
+    padding: 20px 10px;
+}
+
+.homelesscontent{
+    background-color: orangered 
+}
+
+ .hamburger{
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 80px;
+    text-justify: center;
+    text-align: center;
+    background-color:blue;
+}
+
+.homelesscontent a{
+    list-style-type: none;
+    position:absolute;
+    display: none;
+    right: 0;
+    top: 0;
+    
+}
+
+.homeless:hover .homelesscontent a{
+    position: relative;
+    display:block;
+    background-color: red;
+}
+
 @media only screen and (max-width: 1250px){
     
     .grid_a{
