@@ -1,3 +1,19 @@
+*{
+    margin:0;
+}
+
+.buttonlink{
+    padding: 20px 10px;
+    text-decoration: none;
+    background-color: teal;
+    display: inline-block;
+}
+
+.jumbo{
+    height: 34vh;
+    background-color:grey;
+}
+
 #projectscontainer{
     background-color:blue;
     padding: 10px;
@@ -10,7 +26,7 @@
 
 
 
-#projectscontainer{
+.grid_a{
     display: grid;
     grid-template-columns: auto 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw auto;
     grid-auto-rows: 500px;
@@ -35,7 +51,7 @@
 
 @media only screen and (max-width: 1250px){
     
-    #projectscontainer{
+    .grid_a{
         display: grid;
         grid-template-columns: auto 12vw 12vw 12vw 12vw 12vw 12vw auto;
         grid-auto-rows: 500px;
@@ -55,7 +71,7 @@
 
 @media only screen and (max-width: 730px){
     
-    #projectscontainer{
+    .grid_a{
         display: grid;
         grid-template-columns: auto 40vw 40vw auto;
         grid-auto-rows: 500px;
