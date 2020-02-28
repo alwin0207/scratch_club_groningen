@@ -1,0 +1,34 @@
+Hoe installeer je MongoDB op een mac?
+
+Voordat je start: 
+    Als je een sleutel icoon te zien krijgt tussen de stappen door dan wordt er een wachtwoord van je verwacht. Wanneer je dit wachtwoord invult kan het lijken alsof je command line leeg blijft. Dit is niet het geval, je input is gewoon niet zichtbaar op de command line.
+
+
+
+
+------ Deel 1: installeer MongoDB en dependancies. ------
+
+Stap 1: installeer homebrew.
+	Command line: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+Stap 2: Vind de mongoDB tab.
+	Command line: brew tap mongodb/brew
+
+Stap 3: Installeer MongoDB.
+	Command line: brew install mongodb-community
+
+
+
+------ Deel 2: Voordat je MongoDB kan gebruiken. (Vanaf mac-os Catalina)------
+
+Stap 4: Maak een data/db map aan.
+	Command line: sudo mkdir -p /System/Volumes/Data/data/db
+
+Stap 5: Stel de folder permissions van deze map aan.
+	Command line: sudo chown -R `id -un` /System/Volumes/Data/data/db
+
+------ Deel 3: Start MongoDB. ------
+
+Stap 6: 
+	Command line: brew services run mongodb-community
+
