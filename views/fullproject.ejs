@@ -1,0 +1,15 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+
+<p> <%= myProject.age%> </p>
+<p> <%= myProject.name%> </p>
+
+<a href=<%="./"+ myProject.id + "/add" %> >Voeg comment toe</a>
+
+<% for (i=0; i<myProject.comments.length; i++){
+    %>
+    <p>Er is een comment</p>
+    <%
+}
+%>
+<%- include("partials/footer") %>
