@@ -1,4 +1,5 @@
- 
+/* --------- Comment Model --------- */
+
 var mongoose = require("mongoose");
  
 var commentSchema = new mongoose.Schema({

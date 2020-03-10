@@ -1,16 +1,15 @@
 <%- include("partials/header") %>
 <%- include("partials/navbar") %>
 
-<p> <%= myProject.age%> </p>
-<p> <%= myProject.name%> </p>
+    <p> <%= myProject.age%> </p>
+    <p> <%= myProject.name%> </p>
 
-<a href=<%="./"+ myProject.id + "/add" %> >Voeg comment toe</a>
+    <a href=<%="./"+ myProject.id + "/add" %> >Voeg comment toe</a>
 
-<% for (i=0; i<myProject.comments.length; i++){
-    %>
+<% for (i=0; i<myProject.comments.length; i++){ %>
     <p>Comment: <%= myProject.comments[i].text %></p>
     <p>Author: <%= myProject.comments[i].author %></p>
-    <%
-}
+    <% }
 %>
+
 <%- include("partials/footer") %>

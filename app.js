@@ -17,36 +17,23 @@ app.use(bodyParser.urlencoded({extended: true}));
 // ... static files ...
 app.use(express.static('stylesheets'));
 
-/*
 
-// ------ Setting up mongoose model and schema ------
-// ... Schema ...
-var scrProjectSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    scrProjectName: String,
-    scrCards: String,
-    scrImage: String,
-    scrProjectDes: String,
-    scrProjectTheme: String
-});
-// ... Model ...
-var ScrProject = mongoose.model("ScrProject", scrProjectSchema);
-
-*/
+////////////////////////////////////////////////////////////////////////////////////
 
 /* ------ Server Routes ------ */
-// ... index route ......
+
+
+// ------...... index route ......------
 app.get("/",function(req, res){
     res.render("landing.ejs");
 });
 
-// ... add project form route ...
+// ------...... add project form route ......------
 app.get("/addform",function(req, res){
     res.render("addform.ejs");
 });
 
-// ... projectpage route ...
+// ------...... projectpage route ......------
 app.get("/projectspage", function(req, res){
     
     var databaseObject;
@@ -54,12 +41,13 @@ app.get("/projectspage", function(req, res){
     // ... reading projects from database and rendering those projects ...
     ScrProject.find(function (err, scrProjects) {
         if (err) return console.error(err);
-        databaseObject = scrProjects;
-        res.render("projectspage.ejs", {projectlist: databaseObject});
-      });
+        res.render("projectspage.ejs", {
+            projectlist: scrProjects
+        });
+    });
 });
 
-// ... add project to database post route ...
+// ------...... add project to database post route ......------
 app.post("/add_projectb", function(req, res){
     // ... restructuring post body to correct object ...
     var scrProjectNew = new ScrProject({
@@ -81,50 +69,47 @@ app.post("/add_projectb", function(req, res){
         else{
             ScrProject.find(function (err, scrProjects) {
                 if (err) return console.error(err);
-              });
-              res.redirect("/projectspage");
+            });
+            res.redirect("/projectspage");
         }
     });
-
 });
 
+// ------...... Post route comment  ......------
 app.post("/fullproject/:id/add", function(req, res){
-
+    
+    // filling in comments model
     var commentNew = new Comment({
         text: req.body["text"],
         author: req.body["author"]
     });
-    console.log("maakt nieuwe comment")
-// Hier gaat iets fout:
+    
+    // save new comment to database + make a association in scrproject collection
     commentNew.save (function(err, comment){
         if (err){
-            console.log("nope comment");
+            console.log(err);
             res.redirect("/projectspage");
         }
- /*       else{
-            console.log("saved nieuwe comment");
-            Comment.find(function (err, comment) {
-                if (err) {return console.error(err);} */
-                else{
-                    console.log("vind deze comment ook weer");
-                    console.log("new comment: " + comment.text)
-                    ScrProject.findById(req.params.id, function(err, foundProject){
-                        if(err){ return console.log(err);}
-                        else{
-                            console.log("vind het bijbehorende project");
-                            console.log(foundProject);  
-                            foundProject.comments.push(comment);
-                            foundProject.save(function(err, foundProject){
-                                if (err){return console.log(err);}
-                                res.redirect("/fullproject/"+req.params.id);
-                            });
+        else{
+            ScrProject.findById(req.params.id, function(err, foundProject){
+                if(err){
+                    return console.log(err);
+                }
+                else{  
+                    foundProject.comments.push(comment);
+                    foundProject.save(function(err, foundProject){
+                        if (err){
+                            return console.log(err);
                         }
+                        res.redirect("/fullproject/"+req.params.id);
                     });
                 }
-           // });
-       // }
+            });
+        }
     });
 });
+
+// ------...... Get route add comment page ......------
 
 app.get("/fullproject/:id/add", function(req, res){
     var projectId = req.params;
@@ -134,20 +119,18 @@ app.get("/fullproject/:id/add", function(req, res){
 
 });
 
+// ------...... Get route full project page ......------
+
 app.get("/fullproject/:id", function(req, res){
-    var projectId = req.params;
-    console.log(projectId);
+
     ScrProject.findById(req.params.id).populate("comments").exec(function (err, foundProject){
         if (err){
             console.log(err);
         }
         else{
-            console.log(foundProject);
             res.render("fullproject.ejs",{myProject: foundProject}); 
         }
     });
-    
-
 });
 
 /* ------ Start Listening to server ------ */
