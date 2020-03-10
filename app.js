@@ -94,34 +94,41 @@ app.post("/fullproject/:id/add", function(req, res){
         text: req.body["text"],
         author: req.body["author"]
     });
-
+    console.log("maakt nieuwe comment")
+// Hier gaat iets fout:
     commentNew.save (function(err, comment){
         if (err){
             console.log("nope comment");
             res.redirect("/projectspage");
         }
-        else{
+ /*       else{
+            console.log("saved nieuwe comment");
             Comment.find(function (err, comment) {
-                if (err) return console.error(err);
-              });
-              console.log("new comment: " + comment.text)
-              ScrProject.findById(req.params.id, function(err, foundProject){
-                if(err){ return console.log(err);}
+                if (err) {return console.error(err);} */
                 else{
-                    console.log(foundProject);  
-                    foundProject.comments.push(comment);
-                    foundProject.save(function(err, foundProject){
-                        if (err){return console.log(err);}
-                        res.redirect("/fullproject/"+req.params.id);
+                    console.log("vind deze comment ook weer");
+                    console.log("new comment: " + comment.text)
+                    ScrProject.findById(req.params.id, function(err, foundProject){
+                        if(err){ return console.log(err);}
+                        else{
+                            console.log("vind het bijbehorende project");
+                            console.log(foundProject);  
+                            foundProject.comments.push(comment);
+                            foundProject.save(function(err, foundProject){
+                                if (err){return console.log(err);}
+                                res.redirect("/fullproject/"+req.params.id);
+                            });
+                        }
                     });
                 }
-              });
-        }
+           // });
+       // }
     });
 });
 
 app.get("/fullproject/:id/add", function(req, res){
     var projectId = req.params;
+    console.log("Lukt het openen?");
     console.log(projectId);
     res.render("addcomment.ejs");
 
@@ -130,7 +137,7 @@ app.get("/fullproject/:id/add", function(req, res){
 app.get("/fullproject/:id", function(req, res){
     var projectId = req.params;
     console.log(projectId);
-    ScrProject.findById(req.params.id).populate("comments.js").exec(function (err, foundProject){
+    ScrProject.findById(req.params.id).populate("comments").exec(function (err, foundProject){
         if (err){
             console.log(err);
         }
