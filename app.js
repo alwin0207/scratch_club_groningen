@@ -2,6 +2,11 @@
 var express =    require("express"),
     bodyParser = require("body-parser"),
     mongoose =   require("mongoose"),
+    expressSession = require("express-session"),
+    passport = require('passport'),
+    User = require("./models/User.js"),
+    LocalStrategy = require('passport-local'),
+    passportLocalMongoose = require("passport-local-mongoose"),
     ScrProject = require("./models/ScrProject.js"),
     Comment = require("./models/Comments.js");
 
@@ -14,6 +19,21 @@ var app = express();
 mongoose.connect('mongodb://localhost/scratchprojectsdb', {useNewUrlParser: true});
 // ... bodyparser ...
 app.use(bodyParser.urlencoded({extended: true}));
+// ... passport ...
+app.use(expressSession(
+    {
+        secret: "dit is best wel gek heh",
+        resave: false,
+        saveUninitialized: false
+    }
+));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // ... static files ...
 app.use(express.static('stylesheets'));
 
@@ -28,6 +48,39 @@ app.get("/",function(req, res){
     res.render("landing.ejs");
 });
 
+//------......register routes ......------
+app.get("/register", function(req, res){
+    res.render("registerform.ejs");
+});
+
+app.post("/register", function(req, res){
+    console.log(req.body.password)
+    User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+        if (err){
+            console.log(err);
+            res.redirect("/register");
+        }
+        else{
+            passport.authenticate("local")(req, res, function() {
+                res.redirect("/projectspage");
+            });
+        }
+    });
+}); 
+//------......login route ......------
+
+app.get("/login", function(req, res){
+    res.render("loginpage.ejs");
+});
+
+app.post("/login", passport.authenticate("local", {
+    successRedirect: "/projectspage",
+    failureRedirect: "/register"
+}),function(req,res){
+
+}); 
+
+
 // ------...... add project form route ......------
 app.get("/addform",function(req, res){
     res.render("addform.ejs");
@@ -36,7 +89,6 @@ app.get("/addform",function(req, res){
 // ------...... projectpage route ......------
 app.get("/projectspage", function(req, res){
     
-    var databaseObject;
 
     // ... reading projects from database and rendering those projects ...
     ScrProject.find(function (err, scrProjects) {
