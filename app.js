@@ -34,8 +34,24 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//... adding user info to all routes ...
+app.use(function(req,res,next){
+    res.locals.currentUser=req.user;
+    console.log(res.locals.currentUser);
+    next();
+});
 // ... static files ...
 app.use(express.static('stylesheets'));
+
+////////////////////////////////////////////////////////////////////////////////////
+// ......------ Middelware (check if visitor is logged in)------......
+
+function isLoggedIn(req, res, next){
+    if (req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +116,7 @@ app.get("/projectspage", function(req, res){
 });
 
 // ------...... add project to database post route ......------
-app.post("/add_projectb", function(req, res){
+app.post("/add_projectb", isLoggedIn, function(req, res){
     // ... restructuring post body to correct object ...
     var scrProjectNew = new ScrProject({
         name: req.body["name"],
@@ -128,12 +144,12 @@ app.post("/add_projectb", function(req, res){
 });
 
 // ------...... Post route comment  ......------
-app.post("/fullproject/:id/add", function(req, res){
+app.post("/fullproject/:id/add", isLoggedIn, function(req, res){
     
     // filling in comments model
     var commentNew = new Comment({
         text: req.body["text"],
-        author: req.body["author"]
+        author: req.user.username
     });
     
     // save new comment to database + make a association in scrproject collection
@@ -161,6 +177,53 @@ app.post("/fullproject/:id/add", function(req, res){
     });
 });
 
+// ------...... Get edit page comment ......------
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+// !!!!!!!!!!!!!!!!!!!!!  give permissions (to do) !!!!!!!!!!!!!!!
+app.get("/fullproject/:id/:id_comment/edit", isLoggedIn, function(req, res){
+    Comment.findById(req.params.id_comment, function(err, foundComment){
+        if (err){
+            console.log(err);
+            return res.redirect("/");
+        }
+        else{
+            res.render("editcomment.ejs",{myComment:foundComment});
+        }
+    });
+});
+
+app.post("/fullproject/:id/:id_comment/edit", isLoggedIn, function(req, res){
+    var myProjectId = req.params.id;
+    var myUpdate = {
+        text: req.body["text"]
+    };
+    Comment.findById(req.params.id_comment, function(err, foundComment){
+        if (err){
+            console.log(err);
+            return res.redirect("/");
+        }
+        else{
+            if(req.user.username===foundComment.author){
+                console.log("fine");
+            }
+            else{
+                console.log("booohhh");
+            }
+            foundComment.update(myUpdate, function(err, foundComment){
+                if(err){
+                    return console.log(err);
+                }
+                console.log(foundComment);
+                res.redirect("/fullproject/"+myProjectId);
+            });
+        }
+    });
+});
+
+////////////////////////////////////////////////////////////////////////////
+
 // ------...... Get route add comment page ......------
 
 app.get("/fullproject/:id/add", function(req, res){
@@ -184,6 +247,7 @@ app.get("/fullproject/:id", function(req, res){
         }
     });
 });
+
 
 /* ------ Start Listening to server ------ */
 app.listen(3000, function(){

@@ -9,6 +9,7 @@
 <% for (i=0; i<myProject.comments.length; i++){ %>
     <p>Comment: <%= myProject.comments[i].text %></p>
     <p>Author: <%= myProject.comments[i].author %></p>
+    <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a>
     <% }
 %>
 
