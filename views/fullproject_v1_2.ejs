@@ -1,0 +1,54 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+
+<div class="fullprojectpage">
+    <div class="fullproject">
+        <div class="titleblock">    
+            <h1> <%= myProject.scrProjectName%> </h1>
+            <p> by: <%= myProject.name%> </p>
+            <a href=<%= "/fullproject/" +myProject._id + "/edit" %>>Edit</a>
+        </div>    
+        <div class="imagecontainer">
+            <p>Here comes:</p>
+            <p><%= myProject.scrImage%></p>
+        </div>
+        <div class="projectinfo">
+            <h2>Maker</h2>
+            <ul>
+                <li>Naam: <%=myProject.name%></li>
+                <li>Leeftijd: <%=myProject.age%></li>
+            </ul>
+            <h2>Project</h2>
+            <ul>
+                <li>Projectnaam: <%=myProject.name%></li>
+                <li>Thema: <%=myProject.scrProjectTheme%></li>
+                <li>Cards: <%=myProject.scrCards%></li> <!--Ja dit is momenteel nog maar 1-->
+            </ul>
+            <h2>Description:</h2>
+            <p>
+                <%=myProject.scrProjectDes%>
+            </p>
+        </div>
+        <div class="commentblock">
+            <div class="commentblocktitle left_right_devider">
+                <p>Comments</p>
+                <a href=<%="./"+ myProject.id + "/add" %> >Voeg comment toe</a>
+            </div>
+
+            <% for (i=0; i<myProject.comments.length; i++){ %>
+                <div class="comment_single left_right_devider">
+                    <div>
+                    <p>Comment: <%= myProject.comments[i].text %></p>
+                    <p>Author: <%= myProject.comments[i].author %></p>
+                    </div>
+                    <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a>
+
+                </div>
+                <% }
+            %>
+            
+        </div>
+    </div>
+</div>
+
+<%- include("partials/footer") %>

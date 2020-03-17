@@ -3,6 +3,7 @@
 var mongoose = require("mongoose");
  
 var scrProjectSchema = new mongoose.Schema({
+   user: String,
    name: String,
    age: Number,
    scrProjectName: String,
@@ -10,8 +11,7 @@ var scrProjectSchema = new mongoose.Schema({
    scrImage: String,
    scrProjectDes: String,
    scrProjectTheme: String,
-   comments: [
-      {
+   comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment"
       }

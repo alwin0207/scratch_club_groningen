@@ -98,7 +98,7 @@ app.post("/login", passport.authenticate("local", {
 
 
 // ------...... add project form route ......------
-app.get("/addform",function(req, res){
+app.get("/addform", isLoggedIn, function(req, res){
     res.render("addform.ejs");
 });
 
@@ -115,10 +115,64 @@ app.get("/projectspage", function(req, res){
     });
 });
 
+app.get("/fullproject/:id/edit", isLoggedIn, function(req, res){
+    ScrProject.findById(req.params.id, function(err, foundProject){
+        if (err){
+            console.log(err);
+            return res.redirect("/");
+        }
+        else{
+            res.render("editproject.ejs",{myProject:foundProject});
+        }
+    });
+});
+
+app.post("/fullproject/:id/edit", isLoggedIn, function(req, res){
+    var myProjectUpdate = {
+        name: req.body["name"],
+        age: req.body["age"],
+        scrProjectName: req.body["prName"],
+        scrCards: req.body["prCards"],
+        scrImage: req.body["prImage"],
+        scrProjectDes: req.body["prDesc"],
+        scrProjectTheme: req.body["prTheme"]
+    }
+
+    ScrProject.findById(req.params.id, function(err, foundProject){
+        var requestID= ""+req.user._id;
+        var projectID= ""+foundProject.user;
+        if (err){
+            console.log(err);
+            return res.redirect("/");
+        }
+        else{
+            if(requestID === projectID){
+                console.log("fine");
+                foundProject.update(myProjectUpdate, function(err, foundProject){
+                    if(err){
+                        return console.log(err);
+                    }
+                    console.log(foundProject);
+                    res.redirect("/fullproject/"+(req.params.id));
+                });
+            }
+            else{
+                console.log("booohhh");
+                console.log(req.user._id);
+                console.log(foundProject.user);
+                res.redirect("/");
+            }
+            
+        }
+    });
+
+    
+});
 // ------...... add project to database post route ......------
 app.post("/add_projectb", isLoggedIn, function(req, res){
     // ... restructuring post body to correct object ...
     var scrProjectNew = new ScrProject({
+        user: req.user._id,
         name: req.body["name"],
         age: req.body["age"],
         scrProjectName: req.body["prName"],
@@ -135,10 +189,28 @@ app.post("/add_projectb", isLoggedIn, function(req, res){
             res.redirect("/projectspage");
         }
         else{
-            ScrProject.find(function (err, scrProjects) {
+            User.findById(req.user, function(err, myUser){
+                if(err) {
+                    console.log(err);
+                    return res.redirect("/")
+                }
+                else{
+                    myUser.projects.push(scrProject);
+                    myUser.save(function(err, foundProject){
+                        if (err){
+                            console.log(err);
+                            return res.redirect("/");
+                        }
+                        else{
+                            return res.redirect("/projectspage")
+                        }
+                    });
+                }
+            });
+            /*ScrProject.find(function (err, scrProjects) {
                 if (err) return console.error(err);
             });
-            res.redirect("/projectspage");
+            res.redirect("/projectspage");*/
         }
     });
 });
@@ -169,7 +241,30 @@ app.post("/fullproject/:id/add", isLoggedIn, function(req, res){
                         if (err){
                             return console.log(err);
                         }
-                        res.redirect("/fullproject/"+req.params.id);
+                        else{
+                            User.findById(req.user, function(err, myUser){
+                                console.log("found user");
+                                console.log(myUser);
+                                if(err) {
+                                    console.log(err);
+                                    return res.redirect("/")
+                                }
+                                else{
+                                    myUser.comments.push(comment);
+                                    myUser.save(function(err, myUser){
+                                        console.log("pushed comment")
+                                        console.log(myUser);
+                                        if (err){
+                                            console.log(err);
+                                            return res.redirect("/");
+                                        }
+                                        else{
+                                            return res.redirect("/fullproject/"+req.params.id);
+                                        }
+                                    });
+                                }
+                            });
+                        }
                     });
                 }
             });
@@ -207,17 +302,19 @@ app.post("/fullproject/:id/:id_comment/edit", isLoggedIn, function(req, res){
         else{
             if(req.user.username===foundComment.author){
                 console.log("fine");
+                foundComment.update(myUpdate, function(err, foundComment){
+                    if(err){
+                        return console.log(err);
+                    }
+                    console.log(foundComment);
+                    res.redirect("/fullproject/"+myProjectId);
+                });
             }
             else{
                 console.log("booohhh");
+                res.redirect("/");
             }
-            foundComment.update(myUpdate, function(err, foundComment){
-                if(err){
-                    return console.log(err);
-                }
-                console.log(foundComment);
-                res.redirect("/fullproject/"+myProjectId);
-            });
+            
         }
     });
 });
@@ -226,7 +323,7 @@ app.post("/fullproject/:id/:id_comment/edit", isLoggedIn, function(req, res){
 
 // ------...... Get route add comment page ......------
 
-app.get("/fullproject/:id/add", function(req, res){
+app.get("/fullproject/:id/add", isLoggedIn, function(req, res){
     var projectId = req.params;
     console.log("Lukt het openen?");
     console.log(projectId);
@@ -243,7 +340,7 @@ app.get("/fullproject/:id", function(req, res){
             console.log(err);
         }
         else{
-            res.render("fullproject.ejs",{myProject: foundProject}); 
+            res.render("fullproject_v1_2.ejs",{myProject: foundProject}); 
         }
     });
 });

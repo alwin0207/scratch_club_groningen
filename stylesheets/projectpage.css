@@ -59,10 +59,39 @@
     height: 40px;
 }
 
+.homelessbox{
+    position:relative;
+    display:flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.reg_log_links{
+    display:flex;
+    margin-right: 2px;
+}
+
+.reg_log_links a{
+    display: flex;
+    position: relative;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 2px;
+    align-self: stretch;
+    text-align: center;
+    align-items: center;
+    background-color: teal;
+}
+
 .homeless{
+    display: flex;
+    flex-direction: column;
     position:relative;
     margin-right: 50px;
+    overflow: visible;
     background-color: transparent;
+
 }
 
 .homeless a{
@@ -70,13 +99,11 @@
     padding: 20px 10px;
 }
 
-.homelesscontent{
-    background-color: orangered 
-}
-
  .hamburger{
     position: relative;
     display: flex;
+    padding:0;
+    margin:0;
     flex-direction: column;
     height: 40px;
     width: 80px;
@@ -90,32 +117,181 @@
     padding-left: 20px;
     padding-right: 20px;
     margin-left: 50px;
-    align-self: stretch;
+    height: 40px;
     text-align: center;
     align-items: center;
     background-color: teal;
 
 }
 
+.homelesscontent{
+    position: relative;
+    display: block;
+    background-color: transparent;
+    /*flex-direction: column; */
+}
+
 .hamburger p{
     text-align: center;
     justify-self: center;
+    margin: 0px;
+    padding: 0px;
 }
 
 .homelesscontent a{
     list-style-type: none;
     position:absolute;
     display: none;
-    right: 0;
-    top: 0;
-    
+
 }
+
+.homeless:hover .homelesscontent{
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    overflow: visible;
+}
+
 
 .homeless:hover .homelesscontent a{
     position: relative;
     display:block;
     background-color: red;
 }
+
+.left_right_devider{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ------------ Full project page layout classes -------------*/
+
+.fullprojectpage{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e0e0e0;
+}
+
+.fullproject{
+    width: 70vw;
+    background-color: grey;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.titleblock{
+    height: 80px;
+    background-color: blue;
+    width: 100%;
+}
+
+.imagecontainer{
+    height: 60vw;
+    width: 100%;
+    background-color: purple;
+}
+
+.projectinfo{
+    width: 100%;
+    background-color: cadetblue;
+
+}
+
+.commentblocktitle{
+    background-color:orangered;
+    padding: 8px;
+}
+
+.commentblock a{
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: green;
+    text-decoration: none;
+    
+}
+
+.comment_single{
+    padding: 8px;
+    border-bottom: 1px dotted black;
+}
+
+.projectinfo ul{
+    margin-top: 5px;
+}
+
+.projectinfo li{
+    list-style: none;
+}
+
+/*===================================================================*/
+
+/*------------------ Layout of login/register(/creation) forms ---------------------*/
+/* !!!!!!!!!!!!!!!!!!!--- Only use for fullpage (because of workaround)---!!!!!!!!!!!!!!!!!!!!!! */
+
+.form_loginstyle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #e5e5e5;
+    height: 100vh;
+    margin-top: -40px;
+    
+}
+
+.form_loginstyle .formblock{
+    display: flex;
+    margin-top: 40px;
+    width: 70vw;
+    background-color: #d6d6d6;
+    height:70%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+
+.form_loginstyle form{
+    padding: 20px;
+    background-color: transparent;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height:auto;
+}
+
+.form_loginstyle input{
+    margin: 4px;
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.form_loginstyle h1{
+    margin-bottom: 20px;
+}
+
+.form_loginstyle button{
+    padding: 20px 15px;
+    background-color: rgb(0, 0, 255);
+    width: 300px;
+    box-shadow: 0 20px 16px 0 rgba(0,0,0,0.3), 0 17px 50px 0 rgba(0,0,0,0.24);
+    border-color: rgb(86, 111, 136);
+}
+
+.form_loginstyle button:hover{
+    box-shadow: 0 15px 16px 0 rgba(0,0,0,0.35),0 6px 20px 0 rgba(0,0,0,0.24);
+    background-color: rgb(10, 68, 255);
+    transition: box-shadow 0.3s, background-color 0.3s;
+
+}
+/*!!!!!!!!!!!!!!!!--- See above ---!!!!!!!!!!!!!*/
+/*====================================================================*/
 
 @media only screen and (max-width: 1250px){
     

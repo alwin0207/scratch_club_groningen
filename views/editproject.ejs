@@ -1,0 +1,19 @@
+<h1>Dit is de edit project page</h1>
+
+<form target="_self" method="POST">
+    <label for="fname">First name:</label>
+     <input id="fname" name="name" type="text" value="<%= myProject.name %>"><br>
+    <label for="myage">Age:</label>
+     <input id="myage" name="age" type="text" value="<%=myProject.age%>"><br>
+    <label for="pname">Project:</label>
+     <input id="pname" name="prName" type="text" value="<%=myProject.scrProjectName%>"><br>
+    <label for="myimage">Image beschrijving:</label>
+     <input id="myimage" name="prImage" type="text" value="<%=myProject.scrImage%>"><br>
+    <label for="mydesc">Project beschrijving:</label>
+     <input id="mydesc" name="prDesc" type="text" value="<%=myProject.scrProjectDes%>"><br>
+    <label for="mycards">Project cards:</label>
+     <input id="mycards" name="prCards" type="text" value="<%=myProject.scrCards%>"><br>
+    <label for="mytheme">Project theme:</label>
+     <input id="mytheme" name="prTheme" type="text" value="<%=myProject.scrProjectTheme%>"><br>
+    <button>Dit is een button</button>
+</form>

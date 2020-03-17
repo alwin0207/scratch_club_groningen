@@ -3,7 +3,15 @@ var mongoose = require("mongoose"),
  
 var UserSchema = new mongoose.Schema({
    name: String,
-   password: String
+   password: String,
+   projects: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ScrProject"
+   }],
+   comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Comment"
+   }]
 });
 
 UserSchema.plugin(passportLocalMongoose);
