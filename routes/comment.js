@@ -144,8 +144,64 @@ router.post("/fullproject/:id/:id_comment/edit", isLoggedIn, function(req, res){
 
 // ------ Get ------ //
 
+router.get("/fullproject/:id/:id_comment/delete", isLoggedIn, function(req, res){
+    Comment.findById(req.params.id_comment, function(err, foundComment){
+        if (err){
+            console.log(err);
+            return res.redirect("/");
+        }
+        else{
+            if((""+req.user._id)===(""+foundComment.user)){
+                res.render("deleteCheck.ejs", {myDelete: foundComment});
+            }
+            else{
+                res.redirect("/");
+            }
+        }
+    });    
+});
 
 // ------ Post ------ //
+
+router.post("/fullproject/:id/:id_comment/delete", isLoggedIn, function(req, res){
+    Comment.findById(req.params.id_comment, function(err, foundComment){
+        if (err){
+            console.log(err);
+            return res.redirect("/");
+        }
+        else{
+            if((""+req.user._id)===(""+foundComment.user)){
+                Comment.deleteOne(foundComment, function(err, deletedComment){
+                    if (err){
+                        console.log(err);
+                        res.redirect("/");
+                    }
+                    else{
+                        User.update({_id: foundComment.user}, {$pull: {comments: foundComment._id}}, function (err, commentsAffected) {
+                            if (err){
+                                console.log(err);
+                                return res.redirect("/");
+                            }
+                            else{
+                                console.log(commentsAffected);
+                                ScrProject.update({_id: req.params.id}, {$pull: {comments: foundComment._id}}, function(err, commentsAffected){
+                                    if(err){
+                                        console.log(err);
+                                        return res.redirect("/");
+                                    }
+                                    else{
+                                        console.log(commentsAffected);
+                                        res.redirect(( "/fullproject/" + req.params.id ));
+                                    }
+                                });
+                            }
+                        });
+                    }    
+                });
+            }
+        }
+    });
+});
 
 //================================================================================
 // Middleware

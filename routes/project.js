@@ -119,7 +119,9 @@ router.get("/fullproject/:id/edit", isLoggedIn, function(req, res){
             if(requestID === projectID){
                 res.render("editproject.ejs",{myProject:foundProject});
             }
-            res.redirect("/projectspage");
+            else{
+                res.redirect("/projectspage");
+            }
         }
     });
 });
@@ -160,6 +162,63 @@ router.post("/fullproject/:id/edit", isLoggedIn, function(req, res){
             } 
         }
     });    
+});
+
+//================================================================================
+// Delete Project routes  (nog aanpassen naar project)
+//================================================================================
+
+router.get("/fullproject/:id/delete", isLoggedIn, function(req, res){
+    ScrProject.findById(req.params.id, function(err, foundProject){
+        if (err){
+            console.log(err);
+            return res.redirect("/");
+        }
+        else{
+            if((""+req.user._id)===(""+foundProject.user)){
+                res.render("deleteCheck.ejs", {myDelete: foundProject});
+            }
+            else{
+                res.redirect("/");
+            }
+        }
+    });    
+});
+
+// ------ Post ------ //
+
+router.post("/fullproject/:id/delete", isLoggedIn, function(req, res){
+    ScrProject.findById(req.params.id, function(err, foundProject){
+        if (err){
+            console.log(err);
+            return res.redirect("/");
+        }
+        else{
+            if((""+req.user._id)===(""+foundProject.user)){
+                ScrProject.deleteOne(foundProject, function(err, deletedProject){
+                    if (err){
+                        console.log(err);
+                        res.redirect("/");
+                    }
+                    else{
+                        User.update({_id: foundProject.user}, {$pull: {projects: foundProject._id }}, function (err, projectsAffected) {
+                            console.log(projectsAffected);
+                            if (err){                                            
+                                console.log(err);
+                                return res.redirect("/");
+                            }
+                            else{
+                                Comment.deleteMany({_id: {$in: foundProject.comments}}, function (err, numberAffected) {
+                                    console.log(numberAffected);
+                                    res.redirect("/projectspage");
+                                });
+                            }
+                        });
+                    }    
+                });
+            }
+        }
+    });
 });
 
 //================================================================================
