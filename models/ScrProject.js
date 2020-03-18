@@ -1,9 +1,13 @@
 /* --------- Scratch Project Model --------- */
 
-var mongoose = require("mongoose");
+var   mongoose = require("mongoose"),
+      Comment = require('./Comments.js');
  
 var scrProjectSchema = new mongoose.Schema({
-   user: String,
+   user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
    name: String,
    age: Number,
    scrProjectName: String,
@@ -17,5 +21,14 @@ var scrProjectSchema = new mongoose.Schema({
       }
    ]
 });
- 
+
+scrProjectSchema.pre('remove',{query: true}, async function() {
+   console.log("ik wordt aangeroepen");
+	await Comment.remove({
+		_id: {
+			$in: this.comments
+		}
+	});
+});
+
 module.exports = mongoose.model("ScrProject", scrProjectSchema);
