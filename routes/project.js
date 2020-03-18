@@ -148,7 +148,7 @@ router.post("/fullproject/:id/edit", isLoggedIn, function(req, res){
         }
         else{
             if(requestID === projectID){
-                foundProject.update(myProjectUpdate, function(err, foundProject){
+                foundProject.updateOne(myProjectUpdate, function(err, foundProject){
                     if(err){
                         return console.log(err);
                     }
@@ -188,7 +188,7 @@ router.get("/fullproject/:id/delete", isLoggedIn, function(req, res){
 // ------ Post ------ //
 
 router.post("/fullproject/:id/delete", isLoggedIn, function(req, res){
-    ScrProject.findById(req.params.id, function(err, foundProject){
+    ScrProject.findById(req.params.id).populate("comments").exec(function(err, foundProject){
         if (err){
             console.log(err);
             return res.redirect("/");
@@ -196,6 +196,8 @@ router.post("/fullproject/:id/delete", isLoggedIn, function(req, res){
         else{
             if((""+req.user._id)===(""+foundProject.user)){
                 ScrProject.deleteOne(foundProject, function(err, deletedProject){
+                    console.log(foundProject);
+                    console.log(deletedProject);
                     if (err){
                         console.log(err);
                         res.redirect("/");
@@ -208,10 +210,13 @@ router.post("/fullproject/:id/delete", isLoggedIn, function(req, res){
                                 return res.redirect("/");
                             }
                             else{
-                                Comment.deleteMany({_id: {$in: foundProject.comments}}, function (err, numberAffected) {
-                                    console.log(numberAffected);
-                                    res.redirect("/projectspage");
-                                });
+       /*problematische deel*/                         User.updateMany({user: {$in: foundProject.comments}}, {$pull: {comments: {_id: {$in: foundProject.comments}}}}, function(err, otherComments){
+                                    console.log(otherComments);
+                                    Comment.deleteMany({_id: {$in: foundProject.comments}}, function (err, numberAffected) {
+                                        console.log(numberAffected);
+                                        res.redirect("/projectspage");
+                                    });
+                                });    
                             }
                         });
                     }    
@@ -231,6 +236,8 @@ function isLoggedIn(req, res, next){
     }
     res.redirect("/login");
 }
+
+//User.updateMany({user: {$in: foundProject.comments}}, {$pull: {comments: {_id: {$in: foundProject.comments}}}}, function(err, otherComments){});
 
 //================================================================================
 // Export
