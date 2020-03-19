@@ -27,7 +27,7 @@ console.log("vanaf hier");
 
 
 	User.updateMany({
-    comments: {$all: myArray}
+    comments: {$in: myArray}
   },
   {
     $pull: {comments: {$in: myArray}}

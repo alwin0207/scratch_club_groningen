@@ -46,21 +46,6 @@ scrProjectSchema.pre('deleteOne' ,function(next) {
          next();
       }
    });
-
-	/*Comment.deleteMany({
-		_id: {
-			$in: temp
-		}
-   }, function(err, yeah){
-      if(err){console.log(err);
-      next();
-      }
-      else{
-         console.log(yeah);
-         console.log("Ik ga via de else naar update");
-         next();
-      }
-   }); */
 });
 
 module.exports = mongoose.model("ScrProject", scrProjectSchema);
