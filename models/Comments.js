@@ -12,16 +12,37 @@ var commentSchema = new mongoose.Schema({
       }
 });
 
-commentSchema.pre('remove',{document: true}, async function() {
-	await User.updateOne({
-		_id: {
-			$in: this.user
-    }
+
+
+commentSchema.pre('deleteMany', function(next) {
+  //console.log("en ik nu ook");
+  //console.log(this)
+  //console.log("en nu de querie");
+console.log("vanaf hier");
+ console.log(this.getQuery());
+ console.log(this.getQuery()._id);
+ console.log(this.getQuery()._id["$in"]);
+ myArray=this.getQuery()._id["$in"];
+ 
+
+
+	User.updateMany({
+    comments: {$all: myArray}
   },
   {
-    $pull: {comments: this._id}
-  });
+    $pull: {comments: {$in: myArray}}
+  }, function (err, removedcomments){
+    if (err){
+      console.log(err);
+      next()
+    }
+    else{
+      console.log("removed from user");
+      console.log(removedcomments);
+      next();
+    }
+  });  
 });
- 
+
 module.exports = mongoose.model("Comment", commentSchema);
  

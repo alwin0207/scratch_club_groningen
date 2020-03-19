@@ -188,14 +188,14 @@ router.get("/fullproject/:id/delete", isLoggedIn, function(req, res){
 // ------ Post ------ //
 
 router.post("/fullproject/:id/delete", isLoggedIn, function(req, res){
-    ScrProject.findById(req.params.id).populate("comments").exec(function(err, foundProject){
+    ScrProject.findById(req.params.id).exec(function(err, foundProject){
         if (err){
             console.log(err);
             return res.redirect("/");
         }
         else{
             if((""+req.user._id)===(""+foundProject.user)){
-                ScrProject.remove(foundProject, function(err, deletedProject){
+                ScrProject.deleteOne(foundProject).exec(function(err, deletedProject){
                     console.log(foundProject);
                     console.log(deletedProject);
                     if (err){
@@ -232,6 +232,8 @@ function isLoggedIn(req, res, next){
 }
 
 //User.updateMany({user: {$in: foundProject.comments}}, {$pull: {comments: {_id: {$in: foundProject.comments}}}}, function(err, otherComments){});
+
+
 
 //================================================================================
 // Export
