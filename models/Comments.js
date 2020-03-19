@@ -2,6 +2,8 @@
 
 var mongoose = require("mongoose"),
     User = require("./User.js");
+   
+
  
 var commentSchema = new mongoose.Schema({
     text: String,
@@ -15,17 +17,8 @@ var commentSchema = new mongoose.Schema({
 
 
 commentSchema.pre('deleteMany', function(next) {
-  //console.log("en ik nu ook");
-  //console.log(this)
-  //console.log("en nu de querie");
-console.log("vanaf hier");
- console.log(this.getQuery());
- console.log(this.getQuery()._id);
- console.log(this.getQuery()._id["$in"]);
- myArray=this.getQuery()._id["$in"];
- 
 
-
+  var myArray=this.getQuery()._id["$in"];
 	User.updateMany({
     comments: {$in: myArray}
   },
@@ -42,6 +35,23 @@ console.log("vanaf hier");
       next();
     }
   });  
+});
+
+commentSchema.pre('deleteOne', function(next) {
+  var myQuery = this.getQuery();
+  console.log(myQuery);
+  console.log("hallo, delete one wordt aangeroepen")
+  User.updateOne({_id: this.getQuery().user._id}, {$pull: {comments: this.getQuery()._id}}, function(err, updatedfilesa){
+    if(err){
+      console.log(err);
+      return next();
+    }
+    else{
+      console.log(updatedfilesa);
+      console.log(myQuery);
+     next();
+    }
+  }); 
 });
 
 module.exports = mongoose.model("Comment", commentSchema);

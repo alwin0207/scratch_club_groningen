@@ -177,23 +177,14 @@ router.post("/fullproject/:id/:id_comment/delete", isLoggedIn, function(req, res
                         res.redirect("/");
                     }
                     else{
-                        User.update({_id: foundComment.user}, {$pull: {comments: foundComment._id}}, function (err, commentsAffected) {
-                            if (err){
+                        ScrProject.update({_id: req.params.id}, {$pull: {comments: foundComment._id}}, function(err, commentsAffected){
+                            if(err){
                                 console.log(err);
                                 return res.redirect("/");
                             }
                             else{
                                 console.log(commentsAffected);
-                                ScrProject.update({_id: req.params.id}, {$pull: {comments: foundComment._id}}, function(err, commentsAffected){
-                                    if(err){
-                                        console.log(err);
-                                        return res.redirect("/");
-                                    }
-                                    else{
-                                        console.log(commentsAffected);
-                                        res.redirect(( "/fullproject/" + req.params.id ));
-                                    }
-                                });
+                                res.redirect(( "/fullproject/" + req.params.id ));
                             }
                         });
                     }    

@@ -23,8 +23,6 @@ var scrProjectSchema = new mongoose.Schema({
 });
 
 scrProjectSchema.pre('deleteOne' ,function(next) {
-   console.log("ik wordt aangeroepen");
-   console.log(this.getQuery().comments[0]);
    var temp = this.getQuery();
    var tempArray=[];
    for(i=0; i<temp.comments.length; i++){
@@ -39,7 +37,7 @@ scrProjectSchema.pre('deleteOne' ,function(next) {
          next();
       }
       else{
-         console.log("we found comments");
+         console.log("deleted comments");
          console.log(commentCount);
          tempArray =0;
          tempArray = [];
