@@ -48,6 +48,7 @@ app.use(function(req,res,next){
 
 // ... static files ...
 app.use(express.static('stylesheets'));
+app.use(express.static("images"));
 
 // ... Using router ...
 app.use(indexRoutes);

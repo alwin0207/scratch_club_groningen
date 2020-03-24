@@ -1,21 +1,20 @@
 <div class="container_projectblock">
     <div class="title_projectblock">
-        <h1><%= project.projectName %></h1>
+        <h1><%= project.scrProjectName %></h1>
     </div>
     <div class="info_projectblock">
-        <h1>Hier komt mijn data</h1>
-        <a href= <%= "../fullproject/" + project.id %> >Link naar id <%= project.id%> </a>
+        <a href= <%= "../fullproject/" + project.id %> >Bekijk project. </a>
         <ul>
             <li><span>Naam:</span><span><%=project.name %></span></li>
             <li><span>Leeftijd:</span><span><%=project.age%></span></li>
-            <li><span>categorie:</span><span>De categorie</span></li>
-            <li><span>Misc:</span><span>Andere info</span></li>
+            <li><span>categorie:</span><span><%=project.scrProjectTheme%></span></li>
+            <li><span>Scratch Kaarten:</span><span><%=project.scrCards%></span></li>
         </ul>
     </div>
     <div class="image_projectblock">
         <h1><%=project.prImage%></h1>
     </div>
     <div class="description_projectblock">
-        <p>Een custom description of the project</p>
+        <p><%=project.scrProjectDes%></p>
     </div>   
 </div>

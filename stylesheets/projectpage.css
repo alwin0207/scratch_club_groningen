@@ -9,6 +9,7 @@
     display: inline-block;
 }
 
+
 .jumbo{
     height: 34vh;
     background-color:grey;
@@ -293,6 +294,67 @@
 /*!!!!!!!!!!!!!!!!--- See above ---!!!!!!!!!!!!!*/
 /*====================================================================*/
 
+/*====================================================================*/
+/* --- Layout test landingpage --- */
+/*====================================================================*/
+
+.landing{
+    display: flex;
+    flex-direction: column;
+    background-image: url("/landingpage_v4.svg");
+    background-color: greenyellow;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 100vh;
+}
+
+.landing h1{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 80px;
+    margin-top: 20px;
+}
+
+.landingmenu h1{
+    margin-top: 0;
+    color: rebeccapurple;
+    margin-bottom: 10px;
+}
+
+.landingblock{
+    display: none;
+    flex-direction: column;
+    width: 60vw;
+    background-color: rgba(252, 1, 231, 0.87);
+    height:60%;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.landing .buttonlink{
+    display: block;
+    padding: 0;
+    font-family: 'Permanent Marker', cursive;
+    color:black;
+    background-color: transparent;
+    font-size: 70px;
+    align-self: center;
+}
+
+.landing .buttonlink:hover{
+    text-decoration: underline;
+}
+
+.landingmenu{
+    margin-bottom: 60px;
+}
+
+/*====================================================================*/
 @media only screen and (max-width: 1250px){
     
     .grid_a{
