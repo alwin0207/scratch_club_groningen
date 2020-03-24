@@ -297,13 +297,17 @@
 /*====================================================================*/
 /* --- Layout test landingpage --- */
 /*====================================================================*/
+.landingbackground{
+    background-image: url("/landinggradient_v2.svg");
+    background-size: 100vw;
+}
 
 .landing{
     display: flex;
     flex-direction: column;
-    background-image: url("/landingpage_v4.svg");
-    background-color: greenyellow;
-    background-size: cover;
+    
+    background-image: url("/landingpage_v6.svg");
+    background-size: 100vw;
     background-repeat: no-repeat;
     background-position: center;
     align-items: center;
@@ -314,8 +318,8 @@
 
 .landing h1{
     font-family: 'Permanent Marker', cursive;
-    font-size: 80px;
-    margin-top: 20px;
+    font-size: 5vw;
+    margin-top: 6.5vh;
 }
 
 .landingmenu h1{
@@ -342,7 +346,7 @@
     font-family: 'Permanent Marker', cursive;
     color:black;
     background-color: transparent;
-    font-size: 70px;
+    font-size: 4.5vw;
     align-self: center;
 }
 
@@ -351,10 +355,30 @@
 }
 
 .landingmenu{
-    margin-bottom: 60px;
+    margin-bottom: 6vh;
 }
 
 /*====================================================================*/
+@media only screen and (max-width: 180vh){
+    .landingmenu{
+    margin-bottom: 10vh;
+    }
+    .landing h1{
+        margin-top: 12vh;
+    }
+
+}
+
+@media only screen and (max-height: 60vw){
+    .landing h1{
+        font-size: 8.5vh;
+    }
+
+    .landing .buttonlink{
+        font-size: 8.5vh;
+    }
+}
+
 @media only screen and (max-width: 1250px){
     
     .grid_a{
@@ -373,7 +397,11 @@
         background-color: grey;
         grid-column: 5/ span 3;
     }
+
+
 }
+
+
 
 @media only screen and (max-width: 730px){
     
