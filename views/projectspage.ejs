@@ -13,6 +13,15 @@
 </ul>
   
 <div id="projectscontainer" class="grid_a">
+    <div class="project_theme_links">
+        <h1>Categorie</h1>
+        <ul>
+            <% for (i=0; i<projectlist.length; i++){ %>
+                <li><a href="#nothing"><%= projectlist[i].name %></a></li>
+            <%}
+            %>
+        </ul>
+    </div>
 <% for (i=0; i<projectlist.length; i++){%>
         <%- include("partials/projectblock", {project: projectlist[i], itemnr: i})%>  
     <%}
