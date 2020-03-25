@@ -16,9 +16,12 @@
 }
 
 #projectscontainer{
-    background-color:blue;
+    background-color:rgb(58, 147, 231);
     padding: 10px;
     padding-top: 50px;
+    background-image: url("/achtergrondpatroon_v2.svg");
+    background-position: center;
+    
 }
 
 .container_projectblock{
@@ -76,21 +79,27 @@
 
 .project_theme_links{
     grid-column: 2/ span 3;
+    grid-row: 1/span 2;
     display: flex;
     flex-direction: column;
     align-content: center;
+    background-color: rgba(78, 65, 65, 0.24);
+    padding: 20px;
+    border-radius: 15px;
+
+    
 }
 
 .project_theme_links a{
     display: block;
     text-decoration: none;
-    color: white;
+    color: rgb(182, 253, 16);
     font-size: 30px;
 
 }
 
 .project_theme_links a:hover{
-    background-color: green;
+    background-color: rgb(75, 80, 75);
     text-decoration: underline;
 }
 
@@ -108,7 +117,7 @@
 }
 
 .project_theme_links h1{
-    color: white;
+    color: rgb(182, 253, 16);
     font-size: 45px;
 }    
 
