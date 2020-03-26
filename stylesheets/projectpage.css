@@ -11,8 +11,70 @@
 
 
 .jumbo{
-    height: 34vh;
-    background-color:grey;
+    display: flex;
+    height: 500px;
+    background-color: rgb(71, 50, 63);
+    background-color: palegreen;
+    background-color: rgb(122, 204, 122);
+    background-image: url("jumbo_afbeelding.svg");
+    background-position-x: 56vw;
+    background-position-y: 70px;
+    background-size: auto 600px;
+    background-repeat: no-repeat;
+}
+
+.jumbo_info{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+    height: 70%;
+    width: 500px;
+    border-radius: 15px;
+    margin-left: 80px;
+    background-color: rgb(240, 94, 184);
+}
+
+.jumbo_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 26px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+.jumbo_text p{
+    margin-top: 20px;
+}
+
+.jumbo_info h1{
+    
+    align-self: center;
+    font-size: 50px;
+}
+
+.jumbo_info a{
+    
+    margin-bottom: 65px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 70px;
+    justify-self: end;
+    align-self: center;
+    border: 2px outset black;
+    border-radius: 5px;
+    background-color: rgb(86, 53, 235);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+ 
 }
 
 #projectscontainer{
@@ -23,6 +85,8 @@
     background-position: center;
     
 }
+
+
 
 .container_projectblock{
     background-color: plum;
@@ -59,27 +123,36 @@
 .grid_a{
     display: grid;
     grid-template-columns: auto 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw auto;
+    grid-template-rows: 150px;
     grid-auto-rows: 350px;
     grid-column-gap: 15px;
     grid-row-gap: 20px;
 }
 
-#projectscontainer .container_projectblock:nth-child(3n+2) {
+.project_theme_title{
+    grid-column: 2/ span 12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+#projectscontainer .container_projectblock:nth-child(3n+3) {
     background-color: goldenrod;
     grid-column: 5/ span 3;
 }
-#projectscontainer .container_projectblock:nth-child(3n+3) {
+#projectscontainer .container_projectblock:nth-child(3n+4) {
     background-color: red;
     grid-column: 8/ span 3;
 }
-#projectscontainer .container_projectblock:nth-child(3n+4) {
+#projectscontainer .container_projectblock:nth-child(3n+5) {
     background-color: palegreen;
     grid-column: 11/ span 3; 
 }
 
 .project_theme_links{
     grid-column: 2/ span 3;
-    grid-row: 1/span 2;
+    grid-row: 2/span 2;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -461,11 +534,11 @@
         grid-row-gap: 20px;
     }
 
-    #projectscontainer .container_projectblock:nth-child(2n+2) {
+    #projectscontainer .container_projectblock:nth-child(2n+3) {
         background-color: grey;
         grid-column: 4/ span 2;
     }
-    #projectscontainer .container_projectblock:nth-child(2n+3) {
+    #projectscontainer .container_projectblock:nth-child(2n+4) {
         background-color: grey;
         grid-column: 6/ span 2;
     }
@@ -487,7 +560,7 @@
         grid-auto-rows: 400px;
     }
 
-    #projectscontainer .container_projectblock:nth-child(n+2) {
+    #projectscontainer .container_projectblock:nth-child(n+3) {
         background-color: turquoise;
         grid-column: 7/ span 6;
     }
@@ -513,7 +586,7 @@
         grid-auto-rows: 400px;       
     }
 
-    #projectscontainer .container_projectblock:nth-child(n+2) {
+    #projectscontainer .container_projectblock:nth-child(n+3) {
         background-color: turquoise;
         grid-column: 4/ span 8;
     }
@@ -531,7 +604,7 @@
          grid-auto-rows: 400px;       
      }
      
-     #projectscontainer .container_projectblock:nth-child(n+2) {
+     #projectscontainer .container_projectblock:nth-child(n+3) {
          background-color: turquoise;
          grid-column: 3/ span 9;
      }
