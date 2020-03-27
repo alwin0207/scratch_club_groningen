@@ -80,7 +80,7 @@
 #projectscontainer{
     background-color:rgb(58, 147, 231);
     padding: 10px;
-    padding-top: 50px;
+    padding-top: 20px;
     background-image: url("/achtergrondpatroon_v2.svg");
     background-position: center;
     
@@ -201,8 +201,93 @@
     position: sticky;
     top:0;
     width: 100vw;
-    background-color: green;
-    height: 40px;
+    background-color: rgb(124, 5, 124);
+    height: 80px;
+}
+/*
+#newloginbutton{
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 10px solid grey;
+    background-image: linear-gradient(black, black 40%, white 50%, black 60%);
+    transition: transform 1.5s;
+    
+}
+.buttontest{
+    display: inline-block;
+    position: relative;
+}
+.buttonhider{
+    
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 10px solid rgb(226, 19, 19);
+    width: 50px;
+    height: 50px;
+    background-color:black;
+    border-radius: 50%;
+    z-index: 50;
+}
+
+
+
+
+.buttontest:hover #newloginbutton{
+    transform: rotate(360deg);
+}
+
+.buttontest:hover .buttonhider{
+    
+    border: 0px solid rgba(15,0,0,0);
+    left: 20px;
+    top: 20px;
+    transition: border 0.5s;
+
+}
+*/
+
+#newbutton{
+    background-color: transparent;
+    display: inline-block;
+    height: 30px;
+    width: 70px;
+    background-image: url(/powerbutton_red.svg);
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-position: 50% 15%;
+    padding-top: 50px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#newbutton:hover{
+    background-image: url(/powerbutton_yellow.svg);
+}
+
+#signupbutton{
+    background-color: transparent;
+    display: inline-block;
+    height: 30px;
+    width: 90px;
+    background-image: url(/add_profile_button_v2.svg);
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-position: 50% 15%;
+    padding-top: 50px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#signupbutton:hover{
+    background-image: url(/add_profile_button_hover.svg);
+
 }
 
 .homelessbox{
@@ -227,7 +312,7 @@
     align-self: stretch;
     text-align: center;
     align-items: center;
-    background-color: teal;
+    background-color: transparent;
 }
 
 .homeless{
@@ -265,8 +350,17 @@
     margin-left: 50px;
     height: 40px;
     text-align: center;
-    align-items: center;
-    background-color: teal;
+    background-color: transparent;
+    height: 30px;
+    background-image: url(/Home_icon.svg);
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-position: 50% 15%;
+    padding-top: 50px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
 
 }
 
