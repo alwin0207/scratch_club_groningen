@@ -6,12 +6,12 @@
 Temporary
 ===========================================================================*/
 
-.buttonlink{
-    padding: 20px 10px;
-    text-decoration: none;
-    background-color: teal;
-    display: inline-block;
-}
+    .buttonlink{
+        padding: 20px 10px;
+        text-decoration: none;
+        background-color: teal;
+        display: inline-block;
+    }
 
 
 
@@ -19,699 +19,655 @@ Temporary
 Jumbotron
 ===========================================================================*/
 
-.jumbo{
-    display: flex;
-    height: 500px;
-    background-color: rgb(71, 50, 63);
-    background-color: palegreen;
-    background-color: rgb(122, 204, 122);
-    background-image: url("jumbo_afbeelding.svg");
-    background-position-x: 56vw;
-    background-position-y: 70px;
-    background-size: auto 600px;
-    background-repeat: no-repeat;
-}
+    .jumbo{
+        display: flex;
+        height: 500px;
+        background-color: rgb(71, 50, 63);
+        background-color: palegreen;
+        background-color: rgb(122, 204, 122);
+        background-image: url("jumbo_afbeelding.svg");
+        background-position-x: 56vw;
+        background-position-y: 70px;
+        background-size: auto 600px;
+        background-repeat: no-repeat;
+    }
 
-.jumbo_info{
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    align-items: center;
-    justify-content: space-between;
-    height: 70%;
-    width: 500px;
-    border-radius: 15px;
-    margin-left: 80px;
-    background-color: rgb(240, 94, 184);
-}
+    .jumbo_info{
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        align-items: center;
+        justify-content: space-between;
+        height: 70%;
+        width: 500px;
+        border-radius: 15px;
+        margin-left: 80px;
+        background-color: rgb(240, 94, 184);
+    }
 
-.jumbo_text{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 26px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 30px;
-}
+    .jumbo_text{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 26px;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 30px;
+    }
 
-.jumbo_text p{
-    margin-top: 20px;
-}
+    .jumbo_text p{
+        margin-top: 20px;
+    }
 
-.jumbo_info h1{
+    .jumbo_info h1{
+        
+        align-self: center;
+        font-size: 50px;
+    }
+
+    .jumbo_info a{
+        
+        margin-bottom: 65px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        width: 320px;
+        height: 70px;
+        justify-self: end;
+        align-self: center;
+        border: 2px outset black;
+        border-radius: 5px;
+        background-color: rgb(86, 53, 235);
+        color: white;
+        text-align: center;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: bold;
     
-    align-self: center;
-    font-size: 50px;
-}
-
-.jumbo_info a{
-    
-    margin-bottom: 65px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    width: 320px;
-    height: 70px;
-    justify-self: end;
-    align-self: center;
-    border: 2px outset black;
-    border-radius: 5px;
-    background-color: rgb(86, 53, 235);
-    color: white;
-    text-align: center;
-    justify-content: center;
-    font-size: 40px;
-    font-weight: bold;
- 
-}
+    }
 
 /*===========================================================================
 Projectpage General
 ===========================================================================*/
 
-#projectscontainer{
-    background-color:rgb(58, 147, 231);
-    padding: 10px;
-    padding-top: 20px;
-    background-image: url("/achtergrondpatroon_v2.svg");
-    background-position: center;
-    
-}
-
-
-
-/*.grid_a{
-    display: grid;
-    grid-template-columns: auto 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw auto;
-    grid-auto-rows: 500px;
-    grid-column-gap: 24px;
-    grid-row-gap: 20px;
-}
-
-
-/*
-#projectscontainer .container_projectblock:nth-child(3n+1) {
-    background-color: goldenrod;
-    grid-column: 2/ span 4;
-}
-#projectscontainer .container_projectblock:nth-child(3n+2) {
-    background-color: red;
-    grid-column: 6/ span 4;
-}
-#projectscontainer .container_projectblock:nth-child(3n+3) {
-    background-color: palegreen;
-    grid-column: 10/ span 4; 
-}
-*/
-
-/*Nieuwe toevoeging layout 24 Maart 2020 ------- Start ------*/
-.grid_a{
-    display: grid;
-    grid-template-columns: auto 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw auto;
-    grid-template-rows: 150px;
-    grid-auto-rows: 350px;
-    grid-column-gap: 15px;
-    grid-row-gap: 20px;
-}
-
-.project_theme_title{
-    grid-column: 2/ span 12;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-}
-
-#projectscontainer .container_projectblock:nth-child(3n+3) {
-    background-color: goldenrod;
-    grid-column: 5/ span 3;
-}
-#projectscontainer .container_projectblock:nth-child(3n+4) {
-    background-color: red;
-    grid-column: 8/ span 3;
-}
-#projectscontainer .container_projectblock:nth-child(3n+5) {
-    background-color: palegreen;
-    grid-column: 11/ span 3; 
-}
-
-.container_projectblock{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
-    border: 0px solid black;
-    border-radius: 5%;
-    background-image:url(/microscope-svgrepo-com.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 60%;
-}
-
-.movie_icon{
-    background-image:url(/movie-player-clapperboard-svgrepo-com.svg);
-    background-size: 70%;
-}
-
-.game_icon{
-    background-image:url(/game-controller-svgrepo-com.svg);
-    background-size: 70%;
-}
-
-.handcraft_icon{
-    background-image:url(/paint-palette-artist-svgrepo-com.svg);
-    background-size: 60%;
-}
-
-.science_experiment_icon{
-    background-image:url(/microscope-svgrepo-com.svg);
-}
-
-.programming_icon{
-
-}
-
-
-.title_projectblock h1{
-    font-size: 30px;
-    margin: 0px;
-    justify-self: center;
-}
-
-.info_projectblock{
-    display: none;
-}
-
-.link_cover_projectblock{
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.project_theme_links{
-    grid-column: 2/ span 3;
-    grid-row: 2/span 2;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    background-color: rgba(78, 65, 65, 0.24);
-    padding: 20px;
-    border-radius: 15px;
-
-    
-}
-
-.description_projectblock{
-    margin: 12px;
-}
-
-.project_theme_links a{
-    display: block;
-    text-decoration: none;
-    color: rgb(182, 253, 16);
-    color: rgb(255, 255, 255);
-    font-size: 35px;
-    font-weight: bold;
-
-}
-
-.project_theme_links a:hover{
-    text-decoration: underline;
-}
-
-.project_theme_links li{
-    text-decoration: none;
-    list-style: none;
-    margin-top: 6px;
-}
-
-.project_theme_links ul{
-    margin-top: 20px;
-    padding: 0;
-    margin-left: 0;
-    
-}
-
-.project_theme_links h1{
-    color: rgb(182, 253, 16);
-    color: rgb(192, 228, 107);
-    font-size: 50px;
-    font-weight: bolder;
-}    
-
-/*Nieuwe toevoeging layout 24 Maart 2020 ------- Einde ------*/
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    position: sticky;
-    top:0;
-    width: 100vw;
-    background-color: rgb(124, 5, 124);
-    height: 80px;
-}
-
-.navbar_left{
-    display: flex;
-    margin-left: 40px;
-    height: 100%;   
-}
-
-.navbar_left a{
-    background-color: transparent;
-    display: inline-block;
-    height: 30px;
-    width: 90px;
-    margin-left: 10px;
-    background-size: 40px 40px;
-    background-repeat: no-repeat;
-    background-position: 50% 15%;
-    padding-top: 50px;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-
-}
-
-.navbar_left a:hover{
-    text-decoration: underline;
-}
-
-#navlink_projects{
-    background-image: url(/projecten_icon_v2.svg);
-}
-
-#navlink_tutorials{
-    background-image: url(/handleiding_icon_v2.svg);
-}
-
-#navlink_questions{
-    background-image: url(/vragen_icon.svg);
-}
-
-#navlink_contact{
-    background-image: url(/contact_icon.svg);
-    background-size: 35px 35px;
-    background-position: 50% 22%;
-}
-
-
-
-/*
-#newloginbutton{
-    display: block;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 10px solid grey;
-    background-image: linear-gradient(black, black 40%, white 50%, black 60%);
-    transition: transform 1.5s;
-    
-}
-.buttontest{
-    display: inline-block;
-    position: relative;
-}
-.buttonhider{
-    
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    border: 10px solid rgb(226, 19, 19);
-    width: 50px;
-    height: 50px;
-    background-color:black;
-    border-radius: 50%;
-    z-index: 50;
-}
-
-
-
-
-.buttontest:hover #newloginbutton{
-    transform: rotate(360deg);
-}
-
-.buttontest:hover .buttonhider{
-    
-    border: 0px solid rgba(15,0,0,0);
-    left: 20px;
-    top: 20px;
-    transition: border 0.5s;
-
-}
-*/
-
-#newbutton{
-    background-color: transparent;
-    display: inline-block;
-    height: 30px;
-    width: 70px;
-    background-image: url(/powerbutton_red.svg);
-    background-size: 40px 40px;
-    background-repeat: no-repeat;
-    background-position: 50% 15%;
-    padding-top: 50px;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-#newbutton:hover{
-    background-image: url(/powerbutton_yellow.svg);
-}
-
-#signupbutton{
-    background-color: transparent;
-    display: inline-block;
-    height: 30px;
-    width: 90px;
-    background-image: url(/add_profile_button_hover.svg);
-    background-size: 40px 40px;
-    background-repeat: no-repeat;
-    background-position: 50% 15%;
-    padding-top: 50px;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-#signupbutton:hover{
-    background-image: url(/add_profile_button_v2.svg);
-
-}
-
-.homelessbox{
-    position:relative;
-    display:flex;
-    flex-direction: row;
-    justify-content: right;
-    margin-right: 100px;
-}
-
-.reg_log_links{
-    display:flex;
-    margin-right: 2px;
-}
-
-.reg_log_links a{
-    display: flex;
-    position: relative;
-    margin-right: 10px;
-    align-self: stretch;
-    text-align: center;
-    align-items: center;
-    background-color: transparent;
-}
-
-.homeless{
-    /* display: flex; */
-    display: none;
-    flex-direction: column;
-    position:relative;
-    margin-right: 50px;
-    overflow: visible;
-    background-color: transparent;
-
-}
-
-.homeless a{
-    display: block;
-    padding: 20px 10px;
-}
-
- .hamburger{
-    position: relative;
-    display: flex;
-    padding:0;
-    margin:0;
-    flex-direction: column;
-    height: 40px;
-    width: 80px;
-    justify-content: center;
-    background-color:blue;
-}
-
-.home{
-    display: flex;
-    padding: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 50px;
-    margin-right: 40px;
-    height: 40px;
-    text-align: center;
-    background-color: transparent;
-    height: 30px;
-    background-image: url(/Home_icon.svg);
-    background-size: 40px 40px;
-    background-repeat: no-repeat;
-    background-position: 50% 15%;
-    padding-top: 50px;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-
-}
-
-.homelesscontent{
-    position: relative;
-    display: block;
-    background-color: transparent;
-    /*flex-direction: column; */
-}
-
-.hamburger p{
-    text-align: center;
-    justify-self: center;
-    margin: 0px;
-    padding: 0px;
-}
-
-.homelesscontent a{
-    list-style-type: none;
-    position:absolute;
-    display: none;
-
-}
-
-.homeless:hover .homelesscontent{
-    position: absolute;
-    top: 40px;
-    right: 0px;
-    overflow: visible;
-}
-
-
-.homeless:hover .homelesscontent a{
-    position: relative;
-    display:block;
-    background-color: red;
-}
-
-.left_right_devider{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* ------------ Full project page layout classes -------------*/
-
-.fullprojectpage{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #e0e0e0;
-}
-
-.fullproject{
-    width: 70vw;
-    background-color: grey;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-}
-
-.titleblock{
-    height: 80px;
-    background-color: blue;
-    width: 100%;
-}
-
-.imagecontainer{
-    height: 60vw;
-    width: 100%;
-    background-color: purple;
-}
-
-.projectinfo{
-    width: 100%;
-    background-color: cadetblue;
-
-}
-
-.commentblocktitle{
-    background-color:orangered;
-    padding: 8px;
-}
-
-.commentblock a{
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: green;
-    text-decoration: none;
-    
-}
-
-.comment_single{
-    padding: 8px;
-    border-bottom: 1px dotted black;
-}
-
-.projectinfo ul{
-    margin-top: 5px;
-}
-
-.projectinfo li{
-    list-style: none;
-}
-
-/*===================================================================*/
-
-/*------------------ Layout of login/register(/creation) forms ---------------------*/
-/* !!!!!!!!!!!!!!!!!!!--- Only use for fullpage (because of workaround)---!!!!!!!!!!!!!!!!!!!!!! */
-
-.form_loginstyle{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #e5e5e5;
-    height: 100vh;
-    margin-top: -40px;
-    
-}
-
-.form_loginstyle .formblock{
-    display: flex;
-    margin-top: 40px;
-    width: 70vw;
-    background-color: #d6d6d6;
-    height:70%;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 12px;
-}
-
-
-.form_loginstyle form{
-    padding: 20px;
-    background-color: transparent;
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    height:auto;
-}
-
-.form_loginstyle input{
-    margin: 4px;
-    width: 300px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 1px solid black;
-}
-
-.form_loginstyle h1{
-    margin-bottom: 20px;
-}
-
-.form_loginstyle button{
-    padding: 20px 15px;
-    background-color: rgb(0, 0, 255);
-    width: 300px;
-    box-shadow: 0 20px 16px 0 rgba(0,0,0,0.3), 0 17px 50px 0 rgba(0,0,0,0.24);
-    border-color: rgb(86, 111, 136);
-}
-
-.form_loginstyle button:hover{
-    box-shadow: 0 15px 16px 0 rgba(0,0,0,0.35),0 6px 20px 0 rgba(0,0,0,0.24);
-    background-color: rgb(10, 68, 255);
-    transition: box-shadow 0.3s, background-color 0.3s;
-
-}
-/*!!!!!!!!!!!!!!!!--- See above ---!!!!!!!!!!!!!*/
-/*====================================================================*/
+    #projectscontainer{
+        background-color:rgb(58, 147, 231);
+        padding: 10px;
+        padding-top: 20px;
+        background-image: url("/achtergrondpatroon_v2.svg");
+        background-position: center;
+        
+    }
+
+    .grid_a{
+        display: grid;
+        grid-template-columns: auto 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw 6vw auto;
+        grid-template-rows: 150px;
+        grid-auto-rows: 350px;
+        grid-column-gap: 15px;
+        grid-row-gap: 20px;
+    }
+
+    .project_theme_title{
+        grid-column: 2/ span 12;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    #projectscontainer .container_projectblock:nth-child(3n+3) {
+        background-color: goldenrod;
+        grid-column: 5/ span 3;
+    }
+    #projectscontainer .container_projectblock:nth-child(3n+4) {
+        background-color: red;
+        grid-column: 8/ span 3;
+    }
+    #projectscontainer .container_projectblock:nth-child(3n+5) {
+        background-color: palegreen;
+        grid-column: 11/ span 3; 
+    }
+
+/*===========================================================================
+Projectpage Projectblock styling
+===========================================================================*/
+
+    .container_projectblock{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+        border: 0px solid black;
+        border-radius: 5%;
+        background-image:url(/vragen_icon.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 70%;
+    }
+
+    .movie_icon{
+        background-image:url(/movie-player-clapperboard-svgrepo-com.svg);
+        background-size: 70%;
+    }
+
+    .game_icon{
+        background-image:url(/game-controller-svgrepo-com.svg);
+        background-size: 70%;
+    }
+
+    .handcraft_icon{
+        background-image:url(/paint-palette-artist-svgrepo-com.svg);
+        background-size: 60%;
+    }
+
+    .science_experiment_icon{
+        background-image:url(/microscope-svgrepo-com.svg);
+        background-size: 60%;
+    }
+
+    .programming_icon{
+        background-image:url(/imagen-play-for-scratch-learn-to-code-with-scratch-0thumb.jpg);
+        background-size: 60%;
+    }
+
+
+    .title_projectblock h1{
+        font-size: 30px;
+        margin: 0px;
+        justify-self: center;
+    }
+
+    .info_projectblock{
+        display: none;
+    }
+
+    .link_cover_projectblock{
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .project_theme_links{
+        grid-column: 2/ span 3;
+        grid-row: 2/span 2;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        background-color: rgba(78, 65, 65, 0.24);
+        padding: 20px;
+        border-radius: 15px;
+
+        
+    }
+
+    .description_projectblock{
+        margin: 12px;
+    }
+
+/*===========================================================================
+Projectspage Theme navigation
+===========================================================================*/
+
+    .project_theme_links a{
+        display: block;
+        text-decoration: none;
+        color: rgb(182, 253, 16);
+        color: rgb(255, 255, 255);
+        font-size: 35px;
+        font-weight: bold;
+
+    }
+
+    .project_theme_links a:hover{
+        text-decoration: underline;
+    }
+
+    .project_theme_links li{
+        text-decoration: none;
+        list-style: none;
+        margin-top: 6px;
+    }
+
+    .project_theme_links ul{
+        margin-top: 20px;
+        padding: 0;
+        margin-left: 0;
+        
+    }
+
+    .project_theme_links h1{
+        color: rgb(182, 253, 16);
+        color: rgb(192, 228, 107);
+        font-size: 50px;
+        font-weight: bolder;
+    }    
+
+
+/*===========================================================================
+Navbar styling (still has remnants of old styling)
+===========================================================================*/
+
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        top:0;
+        width: 100vw;
+        background-color: rgb(124, 5, 124);
+        height: 80px;
+    }
+
+    .navbar_left{
+        display: flex;
+        margin-left: 40px;
+        height: 100%;   
+    }
+
+    .navbar_left a{
+        background-color: transparent;
+        display: inline-block;
+        height: 30px;
+        width: 90px;
+        margin-left: 10px;
+        background-size: 40px 40px;
+        background-repeat: no-repeat;
+        background-position: 50% 15%;
+        padding-top: 50px;
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+
+    }
+
+    .navbar_left a:hover{
+        text-decoration: underline;
+    }
+
+    #navlink_projects{
+        background-image: url(/projecten_icon_v2.svg);
+    }
+
+    #navlink_tutorials{
+        background-image: url(/handleiding_icon_v2.svg);
+    }
+
+    #navlink_questions{
+        background-image: url(/vragen_icon.svg);
+    }
+
+    #navlink_contact{
+        background-image: url(/contact_icon.svg);
+        background-size: 35px 35px;
+        background-position: 50% 22%;
+    }
+
+
+
+    #newbutton{
+        background-color: transparent;
+        display: inline-block;
+        height: 30px;
+        width: 70px;
+        background-image: url(/powerbutton_red.svg);
+        background-size: 40px 40px;
+        background-repeat: no-repeat;
+        background-position: 50% 15%;
+        padding-top: 50px;
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    #newbutton:hover{
+        background-image: url(/powerbutton_yellow.svg);
+    }
+
+    #signupbutton{
+        background-color: transparent;
+        display: inline-block;
+        height: 30px;
+        width: 90px;
+        background-image: url(/add_profile_button_hover.svg);
+        background-size: 40px 40px;
+        background-repeat: no-repeat;
+        background-position: 50% 15%;
+        padding-top: 50px;
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    #signupbutton:hover{
+        background-image: url(/add_profile_button_v2.svg);
+
+    }
+
+    .homelessbox{
+        position:relative;
+        display:flex;
+        flex-direction: row;
+        justify-content: right;
+        margin-right: 100px;
+    }
+
+    .reg_log_links{
+        display:flex;
+        margin-right: 2px;
+    }
+
+    .reg_log_links a{
+        display: flex;
+        position: relative;
+        margin-right: 10px;
+        align-self: stretch;
+        text-align: center;
+        align-items: center;
+        background-color: transparent;
+    }
+
+    .home{
+        display: flex;
+        padding: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 50px;
+        margin-right: 40px;
+        height: 40px;
+        text-align: center;
+        background-color: transparent;
+        height: 30px;
+        background-image: url(/Home_icon.svg);
+        background-size: 40px 40px;
+        background-repeat: no-repeat;
+        background-position: 50% 15%;
+        padding-top: 50px;
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+/*===========================================================================
+Navbar styling Dropdown Menu (only test currently not used)
+===========================================================================*/
+
+    .homeless{
+        /* display: flex; */
+        display: none;
+        flex-direction: column;
+        position:relative;
+        margin-right: 50px;
+        overflow: visible;
+        background-color: transparent;
+
+    }
+
+    .homeless a{
+        display: block;
+        padding: 20px 10px;
+    }
+
+    .hamburger{
+        position: relative;
+        display: flex;
+        padding:0;
+        margin:0;
+        flex-direction: column;
+        height: 40px;
+        width: 80px;
+        justify-content: center;
+        background-color:blue;
+    }
+
+
+
+    .homelesscontent{
+        position: relative;
+        display: block;
+        background-color: transparent;
+        /*flex-direction: column; */
+    }
+
+    .hamburger p{
+        text-align: center;
+        justify-self: center;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .homelesscontent a{
+        list-style-type: none;
+        position:absolute;
+        display: none;
+
+    }
+
+    .homeless:hover .homelesscontent{
+        position: absolute;
+        top: 40px;
+        right: 0px;
+        overflow: visible;
+    }
+
+
+    .homeless:hover .homelesscontent a{
+        position: relative;
+        display:block;
+        background-color: red;
+    }
+
+    .left_right_devider{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+/*===========================================================================
+Full project page layout General
+===========================================================================*/
+
+    /* ------------ Full project page layout classes -------------*/
+
+    .fullprojectpage{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #e0e0e0;
+    }
+
+    .fullproject{
+        width: 70vw;
+        background-color: grey;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+
+    .titleblock{
+        height: 80px;
+        background-color: blue;
+        width: 100%;
+    }
+
+    .imagecontainer{
+        height: 60vw;
+        width: 100%;
+        background-color: purple;
+    }
+
+    .projectinfo{
+        width: 100%;
+        background-color: cadetblue;
+
+    }
+
+    .commentblocktitle{
+        background-color:orangered;
+        padding: 8px;
+    }
+
+    .commentblock a{
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: green;
+        text-decoration: none;
+        
+    }
+
+    .comment_single{
+        padding: 8px;
+        border-bottom: 1px dotted black;
+    }
+
+    .projectinfo ul{
+        margin-top: 5px;
+    }
+
+    .projectinfo li{
+        list-style: none;
+    }
+
+/*===========================================================================
+Login/Register forms (only fullpage)
+===========================================================================*/
+
+    /* !!!!!!!!!!!!!!!!!!!--- Only use for fullpage (because of workaround)---!!!!!!!!!!!!!!!!!!!!!! */
+
+    .form_loginstyle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #e5e5e5;
+        height: 100vh;
+        margin-top: -40px;
+        
+    }
+
+    .form_loginstyle .formblock{
+        display: flex;
+        margin-top: 40px;
+        width: 70vw;
+        background-color: #d6d6d6;
+        height:70%;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 12px;
+    }
+
+
+    .form_loginstyle form{
+        padding: 20px;
+        background-color: transparent;
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height:auto;
+    }
+
+    .form_loginstyle input{
+        margin: 4px;
+        width: 300px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: 1px solid black;
+    }
+
+    .form_loginstyle h1{
+        margin-bottom: 20px;
+    }
+
+    .form_loginstyle button{
+        padding: 20px 15px;
+        background-color: rgb(0, 0, 255);
+        width: 300px;
+        box-shadow: 0 20px 16px 0 rgba(0,0,0,0.3), 0 17px 50px 0 rgba(0,0,0,0.24);
+        border-color: rgb(86, 111, 136);
+    }
+
+    .form_loginstyle button:hover{
+        box-shadow: 0 15px 16px 0 rgba(0,0,0,0.35),0 6px 20px 0 rgba(0,0,0,0.24);
+        background-color: rgb(10, 68, 255);
+        transition: box-shadow 0.3s, background-color 0.3s;
+
+    }
+    /*!!!!!!!!!!!!!!!!--- See above ---!!!!!!!!!!!!!*/
+
 
 /*====================================================================*/
 /* --- Layout test landingpage --- */
 /*====================================================================*/
-.landingbackground{
-    background-image: url("/landinggradient_v2.svg");
-    background-size: 100vw;
-}
+    .landingbackground{
+        background-image: url("/landinggradient_v2.svg");
+        background-size: 100vw;
+    }
 
-.landing{
-    display: flex;
-    flex-direction: column;
-    
-    background-image: url("/landingpage_v6.svg");
-    background-size: 100vw;
-    background-repeat: no-repeat;
-    background-position: center;
-    align-items: center;
-    justify-content: space-between;
+    .landing{
+        display: flex;
+        flex-direction: column;
+        
+        background-image: url("/landingpage_v6.svg");
+        background-size: 100vw;
+        background-repeat: no-repeat;
+        background-position: center;
+        align-items: center;
+        justify-content: space-between;
 
-    height: 100vh;
-}
+        height: 100vh;
+    }
 
-.landing h1{
-    font-family: 'Permanent Marker', cursive;
-    font-size: 5vw;
-    margin-top: 6.5vh;
-}
+    .landing h1{
+        font-family: 'Permanent Marker', cursive;
+        font-size: 5vw;
+        margin-top: 6.5vh;
+    }
 
-.landingmenu h1{
-    margin-top: 0;
-    color: rebeccapurple;
-    margin-bottom: 10px;
-}
+    .landingmenu h1{
+        margin-top: 0;
+        color: rebeccapurple;
+        margin-bottom: 10px;
+    }
 
-.landingblock{
-    display: none;
-    flex-direction: column;
-    width: 60vw;
-    background-color: rgba(252, 1, 231, 0.87);
-    height:60%;
-    align-content: center;
-    text-align: center;
-    justify-content: center;
-    border-radius: 12px;
-}
+    .landingblock{
+        display: none;
+        flex-direction: column;
+        width: 60vw;
+        background-color: rgba(252, 1, 231, 0.87);
+        height:60%;
+        align-content: center;
+        text-align: center;
+        justify-content: center;
+        border-radius: 12px;
+    }
 
-.landing .buttonlink{
-    display: block;
-    padding: 0;
-    font-family: 'Permanent Marker', cursive;
-    color:black;
-    background-color: transparent;
-    font-size: 4.5vw;
-    align-self: center;
-}
+    .landing .buttonlink{
+        display: block;
+        padding: 0;
+        font-family: 'Permanent Marker', cursive;
+        color:black;
+        background-color: transparent;
+        font-size: 4.5vw;
+        align-self: center;
+    }
 
-.landing .buttonlink:hover{
-    text-decoration: underline;
-}
+    .landing .buttonlink:hover{
+        text-decoration: underline;
+    }
 
-.landingmenu{
-    margin-bottom: 6vh;
-}
+    .landingmenu{
+        margin-bottom: 6vh;
+    }
+
+/*===========================================================================
+Scalability
+===========================================================================*/
 
 /*====================================================================*/
 @media only screen and (max-width: 180vh){
