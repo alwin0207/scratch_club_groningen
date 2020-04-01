@@ -533,43 +533,182 @@ Full project page layout General
         display:flex;
         flex-direction: column;
         align-items: center;
-        background-color: #e0e0e0;
+        background-color: #eaeaea;
+    }
+
+    .grid_b{
+        display: grid;
+        grid-template-columns: auto 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw auto;
+        grid-template-rows: 150px 400px 200px;
+        grid-auto-rows: 350px;
+        grid-column-gap: 35px;
     }
 
     .fullproject{
-        width: 70vw;
-        background-color: grey;
+        width: 100vw;
+        background-color: rgb(9, 148, 125);
+        background-color: rgb(104, 174, 248);
         border-left: 1px solid black;
         border-right: 1px solid black;
+        background-image: url("/achtergrondpatroon_v2.svg");
+        background-position: center;
     }
 
     .titleblock{
-        height: 80px;
-        background-color: blue;
+        grid-row: 1;
+        grid-column: 2/ span 12;
+        height: 120px;
+        background-color: transparent;
         width: 100%;
+        text-align: center;
+    }
+
+    .titleblock h1{
+        margin-top: 40px;
+        font-size: 50px;
+        
     }
 
     .imagecontainer{
-        height: 60vw;
-        width: 100%;
-        background-color: purple;
+        grid-row: 2;
+        grid-column: 2/ span 8;
+        background-color: rgb(9, 148, 125);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 1px solid grey;
+    }
+
+    .imagecontainer img{
+        size: 100vw;
+        position: center;
+        overflow: hidden;
     }
 
     .projectinfo{
-        width: 100%;
-        background-color: cadetblue;
+        display: flex;
+        flex-direction: column;
+        grid-column: 2/ span 8;
+        grid-row: 3;
+        background-color: #eaeaea;
+        align-items: center;
+        border: 1px solid grey;
+        border-top: 0;
 
+    }
+
+    .projectinfo h1{
+        font-size: 40px;
+        align-self: center;
+        
+    }
+    
+    .projectinfo h3{
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .projectinfo p{
+        margin-top: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .userinfo{
+        grid-row: 2;
+        grid-column: 10/ span 4;
+        background-color: #eaeaea;
+        display: grid;
+        grid-template-columns: 10% auto 20% 160px 20% auto 10%;
+        grid-template-rows: 50px 100px 60px 20px auto;
+        justify-content: stretch;
+        align-items: stretch;
+        overflow: hidden;
+        border: 1px solid grey;
+    }
+
+    .userinfo_background{
+        grid-row: 1/ span 2;
+        grid-column: 1/ span 7;
+        background-color: rgb(226, 214, 43);
+        background-image: url(https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+        background-position: 50% 0%;
+        background-size: 40vw; 
+        overflow: hidden;
+    }
+
+    .userinfo_background img{
+        position: 40% 10%;
+        width: 50vw;
+
+    }
+
+    .avatar_user{
+        grid-row: 2/ span 2;
+        grid-column: 4;
+        border-radius: 50%;
+        border: 3px solid rgb(211, 7, 7);
+        background-color: black;
+    }
+
+    .userinfo_info{
+        grid-column: 3/ span 3;
+        grid-row: 5;
+        background-color: #eaeaea;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .userinfo_info h2{
+        font-size: 30px;
+        align-self: center;
+    }
+
+    .userinfo_info p{
+        margin: 25px 20px;
+    }
+
+    .commentblock{
+        grid-column: 2/ span 8;
+        grid-row: auto/ span auto;
+        background-color: #eaeaea;
+        margin-top: 25px;
+        border: 1px solid grey;
+        margin-bottom: 25px;
+    }
+
+    .main_text{
+        grid-column: 2/ span 8;
+        grid-row: 4/ span auto;
+        display: flex;
+        flex-direction: column;
+        background-color: #eaeaea;
+        border: 1px solid grey;
+        margin-top: 25px;
+    }
+
+    .main_text p{
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 30px;
+    }
+
+    .main_text h1{
+        margin-top: 30px;
+        align-self: center;
     }
 
     .commentblocktitle{
         background-color:orangered;
+        background-color: #cf0653;
         padding: 8px;
     }
 
     .commentblock a{
         display: inline-block;
         padding: 10px 15px;
-        background-color: green;
+        background-color: rgb(9, 148, 125);
+        color: #eac8d8;
         text-decoration: none;
         
     }

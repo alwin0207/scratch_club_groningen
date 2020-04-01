@@ -2,32 +2,36 @@
 <%- include("partials/navbar") %>
 
 <div class="fullprojectpage">
-    <div class="fullproject">
+    <div class="fullproject grid_b">
         <div class="titleblock">    
-            <h1> <%= myProject.scrProjectName%> </h1>
-            <p> by: <%= myProject.name%> </p>
+            <h1> Roots </h1>
             <a href=<%= "/fullproject/" +myProject._id + "/edit" %>>Edit</a>
+        </div>
+        <div class="userinfo">
+            <div class=userinfo_background>
+                <img src="https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            </div>
+            <div class="avatar_user">
+                <img src=<%=myProject.name%> alt="avatar" >
+            </div>
+            <div class="userinfo_info">
+                <h2> <%=myProject.name%> </h2>
+                <p>Hallo, Mijn naam is Alwin en dit is een placeholdertekst</p>
+            </div>
         </div>    
-        <div class="imagecontainer">
-            <p>Here comes:</p>
-            <p><%= myProject.scrImage%></p>
+        <div class="imagecontainer game_icon">
+            <img scr= <%= myProject.scrImage%> >
         </div>
         <div class="projectinfo">
-            <h2>Maker</h2>
-            <ul>
-                <li>Naam: <%=myProject.name%></li>
-                <li>Leeftijd: <%=myProject.age%></li>
-            </ul>
-            <h2>Project</h2>
-            <ul>
-                <li>Projectnaam: <%=myProject.name%></li>
-                <li>Thema: <%=myProject.scrProjectTheme%></li>
-                <li>Cards: <%=myProject.scrCards%></li> <!--Ja dit is momenteel nog maar 1-->
-            </ul>
-            <h2>Description:</h2>
+            <h3><%= myProject.scrProjectTheme%></h3>
+            <h1><%= myProject.scrProjectName%></h1>
             <p>
                 <%=myProject.scrProjectDes%>
             </p>
+        </div>
+        <div class="main_text">
+            <h1>Hier komt een titel</h1>
+            <p>Hier komt alle uitleg en een tekstvak</p>
         </div>
         <div class="commentblock">
             <div class="commentblocktitle left_right_devider">
