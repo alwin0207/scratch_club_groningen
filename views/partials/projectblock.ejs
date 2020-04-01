@@ -1,19 +1,10 @@
-<div class="container_projectblock">
+<div class="container_projectblock game_icon">
     <a class="link_cover_projectblock" href=<%= "../fullproject/" + project.id %>></a>
+    <div class="theme_projectblock">
+        <h1><%=project.prImage%></h1>
+    </div>
     <div class="title_projectblock">
         <h1><%= project.scrProjectName %></h1>
-    </div>
-    <div class="info_projectblock">
-        <a href= <%= "../fullproject/" + project.id %> >Bekijk project. </a>
-        <ul>
-            <li><span>Naam:</span><span><%=project.name %></span></li>
-            <li><span>Leeftijd:</span><span><%=project.age%></span></li>
-            <li><span>categorie:</span><span><%=project.scrProjectTheme%></span></li>
-            <li><span>Scratch Kaarten:</span><span><%=project.scrCards%></span></li>
-        </ul>
-    </div>
-    <div class="image_projectblock">
-        <h1><%=project.prImage%></h1>
     </div>
     <div class="description_projectblock">
         <p><%=project.scrProjectDes%></p>

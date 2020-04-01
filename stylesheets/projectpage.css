@@ -24,7 +24,8 @@ Jumbotron
         height: 500px;
         background-color: rgb(71, 50, 63);
         background-color: palegreen;
-        background-color: rgb(122, 204, 122);
+        background-color: rgba(186, 251, 47, 0.76);
+        background-color: rgba(9, 148, 125, 0.8);
         background-image: url("jumbo_afbeelding.svg");
         background-position-x: 56vw;
         background-position-y: 70px;
@@ -43,6 +44,7 @@ Jumbotron
         border-radius: 15px;
         margin-left: 80px;
         background-color: rgb(240, 94, 184);
+        background-color: #cf0653;
     }
 
     .jumbo_text{
@@ -78,6 +80,7 @@ Jumbotron
         border: 2px outset black;
         border-radius: 5px;
         background-color: rgb(86, 53, 235);
+        background-color: rgba(49, 46, 231, 1);
         color: white;
         text-align: center;
         justify-content: center;
@@ -92,6 +95,9 @@ Projectpage General
 
     #projectscontainer{
         background-color:rgb(58, 147, 231);
+        background-color: rgb(255, 239, 95);
+        background-color: rgb(255, 95, 95);
+        background-color: rgb(104, 174, 248);
         padding: 10px;
         padding-top: 20px;
         background-image: url("/achtergrondpatroon_v2.svg");
@@ -117,15 +123,15 @@ Projectpage General
     }
 
     #projectscontainer .container_projectblock:nth-child(3n+3) {
-        background-color: goldenrod;
+        /*background-color: goldenrod;*/
         grid-column: 5/ span 3;
     }
     #projectscontainer .container_projectblock:nth-child(3n+4) {
-        background-color: red;
+        /*background-color: red;*/
         grid-column: 8/ span 3;
     }
     #projectscontainer .container_projectblock:nth-child(3n+5) {
-        background-color: palegreen;
+        /*background-color: palegreen; */
         grid-column: 11/ span 3; 
     }
 
@@ -134,16 +140,34 @@ Projectpage Projectblock styling
 ===========================================================================*/
 
     .container_projectblock{
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        background-color: #eaeaea;
+        grid-template-rows: 62% 13% 25%;
         position: relative;
-        align-items: center;
-        border: 0px solid black;
+        align-items: stretch;
+        justify-content: stretch;
+        border: 0px outset rgb(42, 41, 41);
         border-radius: 5%;
+        box-shadow: 0 15px 16px 0 rgba(0,0,0,0.35),0 6px 20px 0 rgba(0,0,0,0.24);
         background-image:url(/vragen_icon.svg);
-        background-position: center;
+        background-position: 50% 20%;
         background-repeat: no-repeat;
-        background-size: 70%;
+        background-size: 50%;
+    }
+    .container_projectblock:hover{
+        box-shadow: 0 20px 16px 0 rgba(0,0,0,0.3), 0 17px 50px 0 rgba(0,0,0,0.24);
+        background-color: #e5e5e5;
+        transition: box-shadow 0.3s, background-color 0.3s;
+    }
+
+    .container_projectblock:hover .project_theme_title{
+        background-color: #d40b58;
+        transition: background-color 0.3s;
+    }
+
+.container_projectblock:hover .projectinfo{
+        background-color: rgb(14, 153, 130);
+        transition: background-color 0.3s;
     }
 
     .movie_icon{
@@ -153,7 +177,7 @@ Projectpage Projectblock styling
 
     .game_icon{
         background-image:url(/game-controller-svgrepo-com.svg);
-        background-size: 70%;
+        background-size: 50%;
     }
 
     .handcraft_icon{
@@ -171,10 +195,25 @@ Projectpage Projectblock styling
         background-size: 60%;
     }
 
+    .title_projectblock{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgb(236, 89, 89);
+        background-color: rgb(240, 94, 184);
+        background-color: #cf0653;
+        color: rgb(228, 213, 228);
+        color: #0F141B;
+        grid-row: 2;
+    }
 
     .title_projectblock h1{
         font-size: 30px;
-        margin: 0px;
+        margin-top: 4px;
+        align-self: stretch;
+        justify-content: center;
+        text-align: center;
+        text-justify: center;
         justify-self: center;
     }
 
@@ -195,17 +234,30 @@ Projectpage Projectblock styling
         display: flex;
         flex-direction: column;
         align-content: center;
-        background-color: rgba(78, 65, 65, 0.24);
+        background-color: rgba(49, 46, 231, 0.404);
         padding: 20px;
         border-radius: 15px;
-
-        
     }
 
     .description_projectblock{
-        margin: 12px;
+        grid-row: 3;
+        background-color: rgb(122, 204, 122);
+        background-color: #aef868;
+        background-color: rgba(186, 251, 47, 0.76);
+        background-color: rgb(9, 148, 125);
+        
+        color: #eac8d8;
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 15px; 
     }
 
+    .description_projectblock p{
+        margin: 10px 20px;
+        max-height: 70%;
+        overflow: hidden;
+    }
+
+    
 /*===========================================================================
 Projectspage Theme navigation
 ===========================================================================*/
@@ -239,7 +291,7 @@ Projectspage Theme navigation
 
     .project_theme_links h1{
         color: rgb(182, 253, 16);
-        color: rgb(192, 228, 107);
+       
         font-size: 50px;
         font-weight: bolder;
     }    
@@ -257,6 +309,7 @@ Navbar styling (still has remnants of old styling)
         width: 100vw;
         background-color: rgb(124, 5, 124);
         height: 80px;
+        z-index: 500;
     }
 
     .navbar_left{
@@ -288,11 +341,13 @@ Navbar styling (still has remnants of old styling)
     }
 
     #navlink_projects{
-        background-image: url(/projecten_icon_v2.svg);
+        background-image: url(/play_button.svg);
+        background-size: 35px 35px;
+        background-position: 50% 20%;
     }
 
     #navlink_tutorials{
-        background-image: url(/handleiding_icon_v2.svg);
+        background-image: url(/lightbulb.svg);
     }
 
     #navlink_questions{
