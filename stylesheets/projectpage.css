@@ -26,11 +26,18 @@ Jumbotron
         background-color: palegreen;
         background-color: rgba(186, 251, 47, 0.76);
         background-color: rgba(9, 148, 125, 0.8);
+        
+        background-image: url(/undraw_science_fqhl.svg);
+        background-position: 80% 50%;
+        background-size: 30%;
+        background-repeat: no-repeat;
+
+        /*
         background-image: url("jumbo_afbeelding.svg");
         background-position-x: 56vw;
         background-position-y: 70px;
         background-size: auto 600px;
-        background-repeat: no-repeat;
+        background-repeat: no-repeat; */
     }
 
     .jumbo_info{
@@ -45,6 +52,7 @@ Jumbotron
         margin-left: 80px;
         background-color: rgb(240, 94, 184);
         background-color: #cf0653;
+        box-shadow: 0 15px 16px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.12);
     }
 
     .jumbo_text{
@@ -341,7 +349,7 @@ Navbar styling (still has remnants of old styling)
     }
 
     #navlink_projects{
-        background-image: url(/play_button.svg);
+        background-image: url(/play-button-variant-inside-a-square-svgrepo-com.svg);
         background-size: 35px 35px;
         background-position: 50% 20%;
     }
@@ -787,22 +795,48 @@ Login/Register forms (only fullpage)
         flex-direction: column;
         background-color: #e5e5e5;
         height: 100vh;
-        margin-top: -40px;
+        margin-top: -80px;  /* page becomes too big (>100vh) because of sticky navbar. Used a negative margin to simulate a fixed navbar.*/
+        background-color: rgb(104, 174, 248);
+        background-image: url("/achtergrondpatroon_v2.svg");
         
     }
 
     .form_loginstyle .formblock{
         display: flex;
-        margin-top: 40px;
+        margin-top: 80px;
         width: 70vw;
-        background-color: #d6d6d6;
-        height:70%;
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
+        background-color: #eaeaea;
+        height:70%;        
         border-radius: 12px;
+        box-shadow: 0 15px 16px 0 rgba(0,0,0,0.35),0 6px 20px 0 rgba(0,0,0,0.24);
+    
     }
 
+    .card_style_login{
+        width: 40%;
+        height: 100%;
+        background-color: rgb(9, 148, 125);
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 12px;
+        border-right: 20px solid #cf0653;
+        background-image: url(/undraw_authentication_fsn5.svg);
+        background-position: center;
+        background-size: 80%;
+        background-repeat: no-repeat;
+    }
+
+    .card_style_register{
+        width: 40%;
+        height: 100%;
+        background-color: #cf0653;
+        background-image: url(/undraw_security_o890.svg);
+        background-position: center;
+        background-size: 80%;
+        background-repeat: no-repeat;
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 12px;
+        border-right: 20px solid rgb(9, 148, 125);
+    }
 
     .form_loginstyle form{
         padding: 20px;
@@ -812,6 +846,7 @@ Login/Register forms (only fullpage)
         flex-direction: column;
         justify-content: center;
         height:auto;
+        width: 60%;
     }
 
     .form_loginstyle input{
