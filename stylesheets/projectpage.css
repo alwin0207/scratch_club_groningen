@@ -539,8 +539,8 @@ Full project page layout General
     .grid_b{
         display: grid;
         grid-template-columns: auto 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw auto;
-        grid-template-rows: 150px 400px 200px;
-        grid-auto-rows: 350px;
+        grid-template-rows: 170px 400px 200px;
+        grid-auto-rows: auto;
         grid-column-gap: 35px;
     }
 
@@ -565,7 +565,7 @@ Full project page layout General
 
     .titleblock h1{
         margin-top: 40px;
-        font-size: 50px;
+        font-size: 80px;
         
     }
 
@@ -650,6 +650,10 @@ Full project page layout General
         background-color: black;
     }
 
+    .avatar_user img{
+        position: 50% 50%;
+    }
+
     .userinfo_info{
         grid-column: 3/ span 3;
         grid-row: 5;
@@ -670,7 +674,7 @@ Full project page layout General
 
     .commentblock{
         grid-column: 2/ span 8;
-        grid-row: auto/ span auto;
+        grid-row: auto;
         background-color: #eaeaea;
         margin-top: 25px;
         border: 1px solid grey;
@@ -685,6 +689,7 @@ Full project page layout General
         background-color: #eaeaea;
         border: 1px solid grey;
         margin-top: 25px;
+        padding: 50px 20px;
     }
 
     .main_text p{
@@ -694,14 +699,57 @@ Full project page layout General
     }
 
     .main_text h1{
-        margin-top: 30px;
+        margin-top: 0px;
         align-self: center;
+    }
+
+    .grid_c{
+        display: grid;
+        grid-template-columns: 10px 70px 20px auto 100px 10px;
+        grid-template-rows: 70px 5px auto;
+        justify-content: stretch;
+        align-items: stretch;
+    }
+
+    .author_avatar{
+        grid-row: 1;
+        grid-column: 2;
+        background-color: burlywood;
+    }
+
+    .author_info{
+        grid-row: 1;
+        grid-column: 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 5px 0 20px 0;
+    }
+
+    .author_info h3{
+        font-size: 20px;
+        color: black;
+    }
+    .author_info p{
+        font-size: 12px;
+        color: grey;
+    }
+
+    .comment_edit_delete{
+        grid-row: 1;
+        grid-column: 5;
+    }
+
+    .comment_content{
+        grid-row: 3;
+        grid-column: 4/ span 2;
+
     }
 
     .commentblocktitle{
         background-color:orangered;
         background-color: #cf0653;
-        padding: 8px;
+        padding: 18px 20px;
     }
 
     .commentblock a{

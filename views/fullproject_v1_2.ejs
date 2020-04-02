@@ -40,13 +40,21 @@
             </div>
 
             <% for (i=0; i<myProject.comments.length; i++){ %>
-                <div class="comment_single left_right_devider">
-                    <div>
-                    <p>Comment: <%= myProject.comments[i].text %></p>
-                    <p>Author: <%= myProject.comments[i].author %></p>
-                    </div>
-                    <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a>
+                <div class="comment_single grid_c">
+                    
+                        <div class="author_avatar">
 
+                        </div>
+                        <div class="author_info">
+                            <h3><%= myProject.comments[i].author %></h3>    
+                            <p><%= myProject.comments[i].author %></p>
+                        </div>
+                        <div class="comment_content">
+                            <p>Comment: <%= myProject.comments[i].text %></p>
+                        </div>
+                        <div class="comment_edit_delete">
+                            <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a>
+                        </div>
                 </div>
                 <% }
             %>
