@@ -588,7 +588,9 @@ Full project page layout General
         background-color: rgb(92, 144, 255);
         background-repeat: no-repeat;
         background-position: center;
-        border: 1px solid grey;
+        /*border: 1px solid grey;*/
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
     }
 
     .imagecontainer img{
@@ -604,8 +606,10 @@ Full project page layout General
         grid-row: 3;
         background-color: rgb(236, 252, 253);
         align-items: center;
-        border: 1px solid grey;
-        border-top: 0;
+        /*border: 1px solid grey;
+        border-top: 0; */
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
 
     }
 
@@ -636,7 +640,7 @@ Full project page layout General
         justify-content: stretch;
         align-items: stretch;
         overflow: hidden;
-        border: 1px solid grey;
+        border-radius: 10px;
     }
 
     .userinfo_background{
@@ -690,7 +694,7 @@ Full project page layout General
         grid-row: auto;
         background-color: rgb(236, 252, 253);
         margin-top: 25px;
-        border: 1px solid grey;
+        border-radius: 10px;
         margin-bottom: 25px;
     }
 
@@ -700,7 +704,7 @@ Full project page layout General
         display: flex;
         flex-direction: column;
         background-color: rgb(236, 252, 253);
-        border: 1px solid grey;
+        border-radius: 10px;
         margin-top: 25px;
         padding: 50px 20px;
     }
@@ -764,6 +768,8 @@ Full project page layout General
         background-color: #cf0653;
         background-color:rgb(250, 85, 85);
         padding: 18px 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
     }
 
     .commentblock a{
@@ -779,6 +785,10 @@ Full project page layout General
     .comment_single{
         padding: 8px;
         border-bottom: 1px dotted black;
+    }
+
+    .commentblock .comment_single:nth-last-child(1){
+        border-bottom: 0px dotted transparent;
     }
 
     .projectinfo ul{
