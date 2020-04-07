@@ -810,11 +810,14 @@ Login/Register forms (only fullpage)
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        background-color: #e5e5e5;
+        background-color: #e0e0e5;
         height: 100vh;
         margin-top: -80px;  /* page becomes too big (>100vh) because of sticky navbar. Used a negative margin to simulate a fixed navbar.*/
         background-color: rgb(104, 174, 248);
+        background-color: rgb(0, 219, 151);
+        background-color: rgb(103, 191, 230);
         background-image: url("/achtergrondpatroon_v2.svg");
+        background-image: linear-gradient(to right, rgb(103, 191, 230),rgb(0, 219, 151));
         
     }
 
@@ -822,7 +825,9 @@ Login/Register forms (only fullpage)
         display: flex;
         margin-top: 80px;
         width: 70vw;
-        background-color: #eaeaea;
+        background-color: rgb(240, 243, 243);
+
+        
         height:70%;        
         border-radius: 12px;
         box-shadow: 0 15px 16px 0 rgba(0,0,0,0.35),0 6px 20px 0 rgba(0,0,0,0.24);
@@ -833,12 +838,16 @@ Login/Register forms (only fullpage)
         width: 40%;
         height: 100%;
         background-color: rgb(9, 148, 125);
+        background-color: rgb(103, 191, 230);
+        background-color:  rgb(245, 123, 93);
+        background-color: rgb(78, 84, 85);
+        background-color: rgb(0, 219, 151);
         border-bottom-left-radius: 12px;
         border-top-left-radius: 12px;
-        border-right: 20px solid #cf0653;
-        background-image: url(/undraw_authentication_fsn5.svg);
+        border-right: 20px solid rgb(94, 22, 234);
+        background-image: url(/sleutel.svg);
         background-position: center;
-        background-size: 80%;
+        background-size: 70%;
         background-repeat: no-repeat;
     }
 
@@ -846,13 +855,14 @@ Login/Register forms (only fullpage)
         width: 40%;
         height: 100%;
         background-color: #cf0653;
-        background-image: url(/undraw_security_o890.svg);
+        background-color: rgb(94, 22, 234);
+        background-image: url(/sleutel_v2.svg);
         background-position: center;
-        background-size: 80%;
+        background-size: 70%;
         background-repeat: no-repeat;
         border-bottom-left-radius: 12px;
         border-top-left-radius: 12px;
-        border-right: 20px solid rgb(9, 148, 125);
+        border-right: 20px solid rgb(0, 219, 151);
     }
 
     .form_loginstyle form{
@@ -872,6 +882,12 @@ Login/Register forms (only fullpage)
         padding: 10px 15px;
         border-radius: 5px;
         border: 1px solid black;
+        background-color:rgb(0, 219, 151);
+        background-color: rgb(103, 191, 230);
+        
+        background-color: rgb(255, 215, 170);
+        background-size: 170%;
+        background-position: center;
     }
 
     .form_loginstyle h1{
@@ -881,9 +897,14 @@ Login/Register forms (only fullpage)
     .form_loginstyle button{
         padding: 20px 15px;
         background-color: rgb(0, 0, 255);
+        background-color: rgb(255, 179, 56);
+        background-image: linear-gradient(to left, rgb(255, 196, 0), rgb(255, 165, 48));
+        background-image: linear-gradient(to right, rgb(255, 176, 0), rgb(255, 210, 0));
         width: 300px;
         box-shadow: 0 20px 16px 0 rgba(0,0,0,0.3), 0 17px 50px 0 rgba(0,0,0,0.24);
         border-color: rgb(86, 111, 136);
+        border-color: rgb(136, 123, 86);
+        
     }
 
     .form_loginstyle button:hover{
