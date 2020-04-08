@@ -1,0 +1,65 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+
+<% if (userLoggedIn===true){%>
+    <button onclick="showForm()">klik hier om de hidden content te laten zien</button>
+    <div id="projectform" class="hidden">
+        <div class="popup_background" onclick="hideForm()">
+                
+        </div>
+        <div class="popup_formblock"> 
+            <div class="formheader"></div>
+                <form action="/add_projectb" target="_self" method="POST">
+                    <div class=form_tab_show>
+                        <label for="fname">First name:</label><br>
+                        <input id="fname" name="name" type="text">
+                    </div>
+                    <div class=form_tab_hide>
+                        <label for="myage">Age:</label><br>
+                        <input id="myage" name="age" type="text">
+                    </div>
+                    <div class=form_tab_hide>
+                        <label for="pname">Project:</label><br>
+                        <input id="pname" name="prName" type="text">
+                    </div>
+                    <div class=form_tab_hide>
+                        <label for="myimage">Image beschrijving:</label><br>
+                        <input id="myimage" name="prImage" type="text">
+                    </div>
+                    <div class=form_tab_hide>
+                        <label for="mydesc">Project beschrijving:</label><br>
+                        <input id="mydesc" name="prDesc" type="text">
+                    </div>
+                    <div class=form_tab_hide>
+                        <label for="mycards">Project cards:</label><br>
+                        <input id="mycards" name="prCards" type="text">
+                    </div>
+                    <div class=form_tab_hide>
+                        <label for="mytheme">Project theme:</label><br>
+                        <input id="mytheme" name="prTheme" type="text">
+                    </div>
+
+                    <button>Dit is een button</button>
+                </form>
+        </div>
+    </div>
+<%}%>
+
+<% if (userLoggedIn===true){%>
+    <script> 
+        var myForm = document.getElementById("projectform");
+        
+        function showForm(){
+        myForm.className = "revealed";
+        }
+        
+        
+        function hideForm(){
+            myForm.className="hidden";
+        }
+
+        
+    </script>
+    <%}%>
+
+    <%- include("partials/footer") %>

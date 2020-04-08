@@ -101,6 +101,11 @@ router.post("/add_projectb", isLoggedIn, function(req, res){
     });
 });
 
+router.get("/mytest", function(req, res){
+    var userLoggedIn = true;
+    res.render("popuptest.ejs", {userLoggedIn:userLoggedIn});
+});
+
 //================================================================================
 // Edit Project routes
 //================================================================================
