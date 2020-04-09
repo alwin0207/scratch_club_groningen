@@ -10,36 +10,40 @@
         <div class="popup_formblock"> 
             <div class="formheader"></div>
                 <form action="/add_projectb" target="_self" method="POST">
-                    <div class=form_tab_show>
+                    <div class="form_tab show">
                         <label for="fname">First name:</label><br>
                         <input id="fname" name="name" type="text">
                     </div>
-                    <div class=form_tab_hide>
+                    <div class="form_tab hide">
                         <label for="myage">Age:</label><br>
                         <input id="myage" name="age" type="text">
                     </div>
-                    <div class=form_tab_hide>
+                    <div class="form_tab hide">
                         <label for="pname">Project:</label><br>
                         <input id="pname" name="prName" type="text">
                     </div>
-                    <div class=form_tab_hide>
+                    <div class="form_tab hide">
                         <label for="myimage">Image beschrijving:</label><br>
                         <input id="myimage" name="prImage" type="text">
                     </div>
-                    <div class=form_tab_hide>
+                    <div class="form_tab hide">
                         <label for="mydesc">Project beschrijving:</label><br>
                         <input id="mydesc" name="prDesc" type="text">
                     </div>
-                    <div class=form_tab_hide>
+                    <div class="form_tab hide">
                         <label for="mycards">Project cards:</label><br>
                         <input id="mycards" name="prCards" type="text">
                     </div>
-                    <div class=form_tab_hide>
+                    <div class="form_tab hide">
                         <label for="mytheme">Project theme:</label><br>
                         <input id="mytheme" name="prTheme" type="text">
                     </div>
+                    <div class="tab_progress">
+                        <p><span class="current_tab_nr"></span>/<span class="total_tab_nr"></span></p>
+                    </div>
 
-                    <button>Dit is een button</button>
+                    <button id="prev_button" type="button" onclick="prevTab()">vorige</button>
+                    <button id="next_button" type="button" onclick="nextTab()">volgende</button>
                 </form>
         </div>
     </div>
@@ -48,6 +52,60 @@
 <% if (userLoggedIn===true){%>
     <script> 
         var myForm = document.getElementById("projectform");
+        var tabs = document.querySelectorAll(".form_tab");
+        var currentTabNr= document.querySelector(".current_tab_nr");
+        var totalTabNr= document.querySelector(".total_tab_nr");
+        var nextButton = document.getElementById("next_button");
+        var tabCount = 0;
+
+
+        function updateTabNr(){
+            currentTabNr.innerHTML = (tabCount+1);
+            totalTabNr.innerHTML = tabs.length;
+        }
+
+        function submitSwitch(){
+            nextButton.innerText = "aanmaken";
+        }
+
+        function nextSwitch(){
+            nextButton.innerText = "volgende";
+            nextButton.type = "button";
+        }
+
+        function nextTab(){
+            if(tabCount<(tabs.length-1)){
+                tabs[tabCount].classList.remove("show");
+                tabs[tabCount].classList.add("hide");
+                tabs[(tabCount+1)].classList.remove("hide");
+                tabs[(tabCount+1)].classList.add("show");
+                tabCount++;
+                updateTabNr()
+                if(tabCount === (tabs.length-1)){
+                    submitSwitch();
+                }
+            }
+            else{
+                console.log("lasttab");
+                nextButton.type="submit";
+        }
+        }
+
+        function prevTab(){
+            if(tabCount>0){
+                tabs[tabCount].classList.remove("show");
+                tabs[tabCount].classList.add("hide");
+                tabs[(tabCount-1)].classList.remove("hide");
+                tabs[(tabCount-1)].classList.add("show");
+                tabCount--;
+                updateTabNr();
+                nextSwitch();
+            }
+            else{console.log("firsttab");}
+            console.log(tabCount);
+        }
+
+        
         
         function showForm(){
         myForm.className = "revealed";
@@ -58,7 +116,8 @@
             myForm.className="hidden";
         }
 
-        
+        updateTabNr();
+
     </script>
     <%}%>
 

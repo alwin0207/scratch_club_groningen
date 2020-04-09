@@ -1,0 +1,43 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+
+<% if (userLoggedIn===true){%>
+    <button onclick= <%= "showForm(" + comment._id +  ");" %> >klik hier om de hidden content te laten zien</button>
+    <div id= <%= "comment_" + commentid %> class="hidden commentform"> <!-- Change commentid placeholder-->
+        <div class="popup_background" onclick="hideForm(plaatshiercommentid)">
+                
+        </div>
+        <div class="popup_formblock"> 
+            <div class="formheader"></div>
+                <form action="/add_projectb" target="_self" method="POST">
+                    <div class="comment_input">
+                        <label for="fname">Schrijf hier je bericht</label><br>
+                        <input id="fname" name="name" type="text">
+                    </div>
+                    <button class="send_button" type="submit">verstuur</button>
+                </form>
+        </div>
+    </div>
+<%}%>
+
+<% if (userLoggedIn===true){%>
+    <script> 
+        var myForm = document.getElementById("projectform");
+        var myComment;
+        
+        function showForm(p){
+            var myId = "comment_"+p;
+            myComment = document.getElementById(myId);
+            myComment.className = "revealed";
+        }
+        
+        
+        function hideForm(){
+            myComment.className="hidden";
+        }
+
+
+    </script>
+    <%}%>
+
+    <%- include("partials/footer") %>

@@ -1251,7 +1251,12 @@ border-radius: 10px;
     border-bottom-left-radius: 13px;
     border-bottom-right-radius: 13px;
     z-index: 20;
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: 10% 39% 2% 39% 10%;
+    grid-template-rows: 17% 30% 10% 11% 15% 17%;
 }
+
 
 .hidden{
     display:none;
@@ -1259,4 +1264,39 @@ border-radius: 10px;
 
 .revealed{
     display: grid;
+}
+
+.form_tab{
+    grid-column: 2/ span 3;
+    grid-row: 2;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+}
+
+
+.tab_progress{
+    grid-column:2;
+    grid-row:4;
+}
+
+.tab_progress p{
+    margin-bottom: 5px;
+}
+
+#prev_button{
+    grid-row: 5;
+    grid-column: 2;
+}
+#next_button{
+    grid-row: 5;
+    grid-column: 4
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: flex;
 }
