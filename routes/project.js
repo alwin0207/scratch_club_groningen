@@ -16,6 +16,15 @@ var express = require("express"),
 
 var router = express.Router();
 
+
+//================================================================================
+// Under construction route
+//================================================================================
+
+    router.get("/under_construction", function(req, res){
+        res.render("under_construction.ejs");
+    });
+
 //================================================================================
 // View Projectspage routes
 //================================================================================
@@ -25,9 +34,16 @@ router.get("/projectspage", function(req, res){
     // ... reading projects from database and rendering those projects ...
     ScrProject.find(function (err, scrProjects) {
         if (err) return console.error(err);
-        res.render("projectspage.ejs", {
-            projectlist: scrProjects
-        });
+        if (req.isAuthenticated()){  // update: added authentication check for diverent content. Now the original link is sending to the original path where isAuthenticated middleware kicks in therefore never sending you to that page.
+            res.render("projectspage_v1_2_test.ejs", {
+            projectlist: scrProjects, showCreateProject: true
+            });
+        }
+        else{
+            res.render("projectspage_v1_2_test.ejs", {
+            projectlist: scrProjects, showCreateProject: false
+            });
+        }
     });
 });
 
@@ -42,7 +58,20 @@ router.get("/fullproject/:id", function(req, res){
             console.log(err);
         }
         else{
-            res.render("fullproject_v1_2.ejs",{myProject: foundProject}); 
+            if (req.isAuthenticated()){
+                User.findById(req.user._id, function(err, currentUser){
+                    if(err){
+                        console.log(err);
+                    }
+                    else{
+                        var userCommentList = currentUser.comments;
+                        res.render("fullproject_v1_3.ejs",{myProject: foundProject, showCreateProject: true, userCommentList:userCommentList}); 
+                    }
+                });
+            }
+            else{
+                res.render("fullproject_v1_3.ejs",{myProject: foundProject, showCreateProject: true, userCommentList: [""]}); 
+            }
         }
     });
 });
@@ -235,6 +264,7 @@ function isLoggedIn(req, res, next){
     }
     res.redirect("/login");
 }
+
 
 //User.updateMany({user: {$in: foundProject.comments}}, {$pull: {comments: {_id: {$in: foundProject.comments}}}}, function(err, otherComments){});
 

@@ -1,0 +1,176 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+
+<div class="fullprojectpage">
+    <div class="fullproject grid_b">
+        <div class="titleblock">    
+            <h1> Roots </h1>
+        </div>
+        <div class="userinfo">
+            <div class=userinfo_background>
+                <img src="https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            </div>
+            <div class="avatar_user">
+                <img src="https://google.com/<%=myProject.name%>" alt="avatar" >
+            </div>
+            <div class="userinfo_info">
+                <h2> <%=myProject.name%> </h2>
+                <p>Hallo, Mijn naam is Alwin en dit is een placeholdertekst</p>
+            </div>
+        </div>    
+        <div class="imagecontainer game_icon">
+            <img scr= <%= myProject.scrImage%> >
+        </div>
+        <div class="projectinfo">
+            <h3><%= myProject.scrProjectTheme%></h3>
+            <h1><%= myProject.scrProjectName%></h1>
+            <p>
+                <%=myProject.scrProjectDes%>
+            </p>
+            <div class="edit_container">
+                <% if (showCreateProject===true){%>
+                    <button onclick="showDestroy()">❌</button>
+                    <button onclick="showForm()">✏️</button>
+                <%}%>
+            </div>
+        </div>
+        <div class="main_text">
+            <h1>Hier komt een titel</h1>
+            <p>Hier komt alle uitleg en een tekstvak</p>
+        </div>
+        <div class="commentblock">
+            <div class="commentblocktitle left_right_devider">
+                <p>Comments</p>
+                <a href=<%="./"+ myProject.id + "/add" %> >Voeg comment toe</a>
+            </div>
+            <% for (i=0; i<myProject.comments.length; i++){ %>
+                <div class="comment_single grid_c">
+                    
+                        <div class="author_avatar">
+
+                        </div>
+                        <div class="author_info">
+                            <h3><%= myProject.comments[i].author %></h3>    
+                            <p><%= myProject.comments[i].author %></p>
+                        </div>
+                        <div class="comment_content">
+                            <p>Comment: <%= myProject.comments[i].text %></p>
+                        </div>
+                        <div class="comment_edit_delete">
+                            <% for (j=0; j<userCommentList.length; j++){
+                                if (("" + myProject.comments[i]._id) === ("" + userCommentList[j]._id)){ 
+                                    
+                                    var edit = "edit";
+                                    var commentDelete = "delete";
+            
+                                    %>
+                                    <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:edit,value:myProject.comments[i].text,project:myProject._id})%>')"></button>
+                                    <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:commentDelete,value:myProject.comments[i].text,project:myProject._id})%>')"></button>
+                                    <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a>
+                                    <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/delete" %> >delete</a>
+                                <%}
+                            }%>
+                            <!-- <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a> -->
+                        </div>
+                </div>
+                <% }
+            %>
+            
+        </div>
+    </div>
+</div>
+<!-- Pas op work in progress-->
+
+    <!-- In deze div komt een shell van mijn form. De data en locatie van de post worden meegestuurt naar het script -->
+    <div id="comment_form_general" class="hidden">
+        <div class="popup_background" onclick="hideCommentForm()">
+    
+        </div>
+        <div class=popup_commentblock>
+            <form id="comment_form_form" target="_self" method="POST">
+              <h1 id="comment_form_label">Weet je zeker dat je dit project wil verwijderen?</h1>
+              <input id="comment_form_input" class="hidden" type="text">
+              <button id="comment_form_button_left" type="button" onclick="hideCommentForm()">Annuleren</button>
+              <button id="comment_form_button_right" type="submit"></button>
+            </form>
+        </div>  
+    </div>
+
+<!-- Pas op work in progress (end)-->
+
+<% if (showCreateProject===true){%>
+<%- include("partials/form_and_script.ejs") %>
+<%}%>
+<!--Pas op work in progress (kan ook nog als partial)-->
+<script>
+    // Hier moet ik de form opzoeken en de juiste action toevoegen in combinatie met de juiste values aan de hand van de user
+    var commentFormDiv = document.getElementById("comment_form_general");
+    var commentFormForm = document.getElementById("comment_form_form");
+    var commentFormLabel = document.getElementById("comment_form_label");
+    var commentFormInput = document.getElementById("comment_form_input");
+    var commentFormButtonRight = document.getElementById("comment_form_button_right");
+
+    var formQuestionText;
+    var formButtonText;
+    var showInput;
+
+    function showMyInput(theInput){
+        console.log(theInput);
+        var b = JSON.parse(theInput);
+        console.log(b);
+    }
+    function getText(question){
+        switch (question){
+            case "create":
+                formQuestionText= "Schrijf je reactie.";
+                formButtonText= "Maak aan";
+                showInput= true;
+                break;
+            case "edit":
+                formQuestionText= "Pas je reactie aan.";
+                formButtonText= "Pas aan";
+                showInput=true;
+                break;
+            case "delete":
+                formQuestionText= "Wil je deze reactie verwijderen?";
+                formButtonText= "Verwijder";
+                showInput=false;
+                break;
+        }
+    }
+
+    function showMyCommentForm(input){
+        var output = JSON.parse(input);
+        console.log(output);
+        showCommentForm(output);
+    }
+
+    function showCommentForm(selectedComment){
+        // in de vorm van object.id, object.question (create,edit of delete), object.value
+        getText(selectedComment.question);
+        commentFormForm.action= "./"+ selectedComment.project + "/" + selectedComment.id + "/" +selectedComment.question;
+        commentFormButtonRight.innerText = formButtonText;
+        commentFormLabel.innerText = formQuestionText;
+        console.log(formQuestionText);
+
+        if (selectedComment.question==="edit"){
+            commentFormInput.value=selectedComment.value;
+        }
+        else{
+            commentFormInput.value="";
+        }
+        if(showInput){
+            commentFormInput.className="show";
+        }
+        else{
+            commentFormInput.className="hide";
+        }
+        commentFormDiv.className= "revealed";
+        
+    }
+    function hideCommentForm(){
+        commentFormDiv.className= "hidden";
+    }
+</script>
+<!--Pas op work in progress (end)-->
+<%- include("partials/footer") %>

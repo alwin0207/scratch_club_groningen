@@ -33,7 +33,7 @@ router.post("/fullproject/:id/add", isLoggedIn, function(req, res){
     var commentNew = new Comment({
         text: req.body["text"],
         author: req.user.username,
-        user: req.user
+        user: req.user // !!!!!!!!!!!!!!!!!might need to be req._user or myProject.user  !!!!!!!!!!!!!!!!!!!
     });
     
     // save new comment to database + make a association in scrproject collection

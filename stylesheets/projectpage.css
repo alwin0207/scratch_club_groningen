@@ -75,6 +75,27 @@ Jumbotron
         font-size: 50px;
     }
 
+    .jumbo_info button{
+        margin-bottom: 65px;
+        padding: 0;
+
+        width: 320px;
+        height: 70px;
+        justify-self: end;
+        align-self: center;
+        border: 2px outset black;
+        border-radius: 5px;
+        background-color: rgb(86, 53, 235);
+        background-color: rgba(49, 46, 231, 1);
+        color: white;
+        text-align: center;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: rgb(253, 170, 1);
+        color: rgb(51,51,51);
+    }
+
     .jumbo_info a{
         
         margin-bottom: 65px;
@@ -177,6 +198,15 @@ Projectpage Projectblock styling
         background-color: rgb(14, 153, 130);
         transition: background-color 0.3s;
     }
+
+.link_description{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
 
     .movie_icon{
         background-image:url(/movie-player-clapperboard-svgrepo-com.svg);
@@ -360,10 +390,14 @@ Navbar styling (still has remnants of old styling)
 
     #navlink_questions{
         background-image: url(/vragen_icon.svg);
+        background-image: url(/vraagteken_v2.svg);
+        background-size: 35px 35px;
+        background-position: 50% 20%;
     }
 
     #navlink_contact{
         background-image: url(/contact_icon.svg);
+        background-image: url(/contact_v2.svg);
         background-size: 35px 35px;
         background-position: 50% 22%;
     }
@@ -565,19 +599,47 @@ Full project page layout General
     }
 
     .titleblock{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         grid-row: 1;
         grid-column: 2/ span 12;
-        height: 120px;
+        height: 160px;
         background-color: transparent;
         width: 100%;
         text-align: center;
     }
 
     .titleblock h1{
-        margin-top: 40px;
+       
         font-size: 80px;
         
     }
+
+    /*.titleblock a,button{
+        width: 50px;
+        height: 50px;
+        background-color: rgb(245, 163, 31);
+        font-size: 20px;
+
+    }*/
+
+    .edit_container{
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        right:10px;
+        top:10px;
+        width: 80px;
+        height: 40px;
+        background-color: green;
+    }
+
+    .edit_container button{
+        width: 40px;
+        height: 40px;
+    }
+
 
     .imagecontainer{
         grid-row: 2;
@@ -601,6 +663,7 @@ Full project page layout General
 
     .projectinfo{
         display: flex;
+        position: relative;
         flex-direction: column;
         grid-column: 2/ span 8;
         grid-row: 3;
@@ -722,7 +785,7 @@ Full project page layout General
 
     .grid_c{
         display: grid;
-        grid-template-columns: 10px 70px 20px auto 100px 10px;
+        grid-template-columns: 10px 70px 20px auto 180px 10px;
         grid-template-rows: 70px 5px auto;
         justify-content: stretch;
         align-items: stretch;
@@ -755,6 +818,15 @@ Full project page layout General
     .comment_edit_delete{
         grid-row: 1;
         grid-column: 5;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        
+    }
+
+    .comment_edit_delete a{
+        margin-left: 2px;
+        max-height: 30px;
     }
 
     .comment_content{
@@ -1148,10 +1220,10 @@ Scalability
     color: black;
     transition-property: background-color, color;
     -webkit-transition-property: background-color, color;
-    transition-duration: 0.5s, 1s;
-    -webkit-transition-duration: 0.5s, 1s;
-    transition-delay: 0s, 1s;
-    -webkit-transition-delay: 0s, 2s;
+    transition-duration: 0.4s, 0.3s;
+    -webkit-transition-duration: 0.4s, 0.3s;
+    transition-delay: 0s, 0.3s;
+    -webkit-transition-delay: 0s, 0.3s;
 
 }
 
@@ -1206,7 +1278,7 @@ Scalability
 #projectform{
     position: fixed;
     grid-template-columns: 30% 40% 30%;
-    grid-template-rows: 80px auto 500px auto;
+    grid-template-rows: 80px 1fr 500px 1fr;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -1214,13 +1286,120 @@ Scalability
 
 }
 
+#destroy_project{
+    position: fixed;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 80px 1fr 300px 1fr;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
 
+#comment_form_general{
+    position: fixed;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 80px 1fr 300px 1fr;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.popup_commentblock{
+    grid-column: 2;
+    grid-row: 3;
+    height: 300px;
+    border-radius: 15px;
+    background-color: rgb(50, 143, 250);
+    background-color: rgb(116, 154, 236);
+
+}
+
+#comment_form_form{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 20% 30% 30% 20%;
+    grid-template-rows: 10% 25% 25% 30% 10%;
+}
+
+#comment_form_label{
+    display: grid;
+    grid-column: 2/ span 2;
+    grid-row: 2;
+    text-align: center;
+}
+
+#comment_form_input{
+    grid-column: 2/span 2;
+    grid-row: 3;
+    height: 50px;
+}
+
+#comment_form_button_left{
+    display: grid;
+    grid-column: 2;
+    grid-row: 4;
+    width: 100%;
+    height: 50px;
+}
+
+#comment_form_button_right{
+    display: grid;
+    grid-column: 3;
+    grid-row: 4;
+    width: 100%;
+    height: 50px;
+}
+
+.popup_deleteblock{
+    grid-column: 2;
+    grid-row: 3;
+    height: 300px;
+    border-radius: 15px;
+    background-color: rgb(50, 143, 250);
+    background-color: rgb(116, 154, 236);
+
+}
+
+.popup_deleteblock form{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 20% 30% 30% 20%;
+    grid-template-rows: 10% 50% 30% 10%;
+}
+
+.popup_deleteblock form h1{
+    display: grid;
+    grid-column: 2/ span 2;
+    grid-row: 2;
+    text-align: center;
+}
+
+
+.popup_deleteblock form #cancel_destroy_button{
+    display: grid;
+    grid-column: 2;
+    grid-row: 3;
+    width: 100%;
+    height: 50px;
+}
+
+.popup_deleteblock form #delete_button{
+    display: grid;
+    grid-column: 3;
+    grid-row: 3;
+    width: 100%;
+    height: 50px;
+}
 
 .popup_background{
     /* this should be a background that is partialy transparent*/
 grid-column: 1/ span 3;
 grid-row: 2/ span 3;
-background-color: rgba(155, 149, 149, 0.452)
+background-color: rgba(155, 149, 149, 0.552);
 
 }
 .popup_formblock{
@@ -1231,7 +1410,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 background-color: rgb(191, 251, 255);
-border-radius: 10px;
+border-radius: 23px;
 }
 
 .formheader{
@@ -1240,16 +1419,16 @@ border-radius: 10px;
     background-image: url(/spaceheader.svg);
     background-size: cover;
     z-index: 20;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    border-top-right-radius: 23px;
+    border-top-left-radius: 23px;
 }
 .popup_formblock form{
     height: 55%;
     width: 90%;
     background-color: purple;
     background-color: rgb(116, 154, 236);
-    border-bottom-left-radius: 13px;
-    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 23px;
+    border-bottom-right-radius: 23px;
     z-index: 20;
     display: grid;
     justify-items: stretch;
@@ -1257,6 +1436,15 @@ border-radius: 10px;
     grid-template-rows: 17% 30% 10% 11% 15% 17%;
 }
 
+.popup_formblock input{
+    border-radius: 10px;
+    height: 30px;
+}
+
+.popup_formblock label{
+    font-size: 30px;
+    font-weight: bold;
+}
 
 .hidden{
     display:none;
@@ -1282,15 +1470,45 @@ border-radius: 10px;
 
 .tab_progress p{
     margin-bottom: 5px;
+    font-size: 18px;
 }
 
 #prev_button{
     grid-row: 5;
     grid-column: 2;
+    background-color: rgb(55, 1, 148);
+    color: white;
+    border-color: rgb(152, 179, 236);
+    border-radius: 10px;
+    font-size: 20px;
 }
 #next_button{
     grid-row: 5;
-    grid-column: 4
+    grid-column: 4;
+    background-color: rgb(55, 1, 148);
+    color: white;
+    border-color: rgb(152, 179, 236);
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+#constructionpage{
+    background-image: url(/under_construction_background.svg);
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#constructionpage a{
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    padding: 30px 50px;
+    background-color: blue;
+    text-decoration: none;
+    color: white;
+
 }
 
 .hide{

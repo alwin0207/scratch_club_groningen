@@ -1,0 +1,132 @@
+<div id="projectform" class="hidden">
+    <div class="popup_background" onclick="hideForm()">
+            
+    </div>
+    <div class="popup_formblock"> 
+        <div class="formheader"></div>
+            <form action=<%= "/fullproject/" +myProject._id + "/edit" %> target="_self" method="POST">
+                <div class="form_tab show">
+                    <label for="fname">First name:</label><br>
+                    <input id="fname" name="name" type="text" value="<%= myProject.name %>">
+                </div>
+                <div class="form_tab hide">
+                    <label for="myage">Age:</label><br>
+                    <input id="myage" name="age" type="text" value="<%= myProject.age %>">
+                </div>
+                <div class="form_tab hide">
+                    <label for="pname">Project:</label><br>
+                    <input id="pname" name="prName" type="text" value="<%= myProject.scrProjectName %>">
+                </div>
+                <div class="form_tab hide">
+                    <label for="myimage">Image beschrijving:</label><br>
+                    <input id="myimage" name="prImage" type="text" value="<%= myProject.scrImage %>">
+                </div>
+                <div class="form_tab hide">
+                    <label for="mydesc">Project beschrijving:</label><br>
+                    <input id="mydesc" name="prDesc" type="text" value="<%= myProject.scrProjectDes %>">
+                </div>
+                <div class="form_tab hide">
+                    <label for="mycards">Project cards:</label><br>
+                    <input id="mycards" name="prCards" type="text" value="<%= myProject.scrCards %>">
+                </div>
+                <div class="form_tab hide">
+                    <label for="mytheme">Project theme:</label><br>
+                    <input id="mytheme" name="prTheme" type="text" value="<%= myProject.scrProjectTheme %>">
+                </div>
+                <div class="tab_progress">
+                    <p><span class="current_tab_nr"></span>/<span class="total_tab_nr"></span></p>
+                </div>
+
+                <button id="prev_button" type="button" onclick="prevTab()">vorige</button>
+                <button id="next_button" type="button" onclick="nextTab()">volgende</button>
+            </form>
+    </div>
+</div>
+<div id="destroy_project" class="hidden">
+    <div class="popup_background" onclick="hideDestroy()">
+
+    </div>
+    <div class=popup_deleteblock>
+        <form action= <%= "/fullproject/" +myProject._id + "/delete" %> target="_self" method="POST">
+          <h1>Weet je zeker dat je dit project wil verwijderen?</h1>
+          <button id="cancel_destroy_button" type="button" onclick="hideDestroy()">Annuleren</button>
+          <button id="delete_button" type="submit">Verwijderen</button>
+        </form>
+    </div>  
+</div>
+<script> 
+    var myForm = document.getElementById("projectform");
+    var myDestroy = document.getElementById("destroy_project")
+    var tabs = document.querySelectorAll(".form_tab");
+    var currentTabNr= document.querySelector(".current_tab_nr");
+    var totalTabNr= document.querySelector(".total_tab_nr");
+    var nextButton = document.getElementById("next_button");
+    var tabCount = 0;
+
+
+    function updateTabNr(){
+        currentTabNr.innerHTML = (tabCount+1);
+        totalTabNr.innerHTML = tabs.length;
+    }
+
+    function submitSwitch(){
+        nextButton.innerText = "aanmaken";
+    }
+
+    function nextSwitch(){
+        nextButton.innerText = "volgende";
+        nextButton.type = "button";
+    }
+
+    function nextTab(){
+        if(tabCount<(tabs.length-1)){
+            tabs[tabCount].classList.remove("show");
+            tabs[tabCount].classList.add("hide");
+            tabs[(tabCount+1)].classList.remove("hide");
+            tabs[(tabCount+1)].classList.add("show");
+            tabCount++;
+            updateTabNr()
+            if(tabCount === (tabs.length-1)){
+                submitSwitch();
+            }
+        }
+        else{
+            console.log("lasttab");
+            nextButton.type="submit";
+    }
+    }
+
+    function prevTab(){
+        if(tabCount>0){
+            tabs[tabCount].classList.remove("show");
+            tabs[tabCount].classList.add("hide");
+            tabs[(tabCount-1)].classList.remove("hide");
+            tabs[(tabCount-1)].classList.add("show");
+            tabCount--;
+            updateTabNr();
+            nextSwitch();
+        }
+        else{console.log("firsttab");}
+        console.log(tabCount);
+    }
+
+    function showDestroy(){
+        myDestroy.className="revealed";
+    }
+
+    function hideDestroy(){
+        myDestroy.className="hidden";
+    }
+    
+    function showForm(){
+    myForm.className = "revealed";
+    }
+    
+    
+    function hideForm(){
+        myForm.className="hidden";
+    }
+
+    updateTabNr();
+
+</script>
