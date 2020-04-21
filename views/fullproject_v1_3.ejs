@@ -41,7 +41,8 @@
         <div class="commentblock">
             <div class="commentblocktitle left_right_devider">
                 <p>Comments</p>
-                <a href=<%="./"+ myProject.id + "/add" %> >Voeg comment toe</a>
+                <% var newComment = "create"; %>
+                <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id: 666,question:newComment,value:666,project:myProject._id})%>')">Voeg comment toe</button>
             </div>
             <% for (i=0; i<myProject.comments.length; i++){ %>
                 <div class="comment_single grid_c">
@@ -64,10 +65,10 @@
                                     var commentDelete = "delete";
             
                                     %>
-                                    <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:edit,value:myProject.comments[i].text,project:myProject._id})%>')"></button>
-                                    <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:commentDelete,value:myProject.comments[i].text,project:myProject._id})%>')"></button>
-                                    <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a>
-                                    <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/delete" %> >delete</a>
+                                    <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:edit,value:myProject.comments[i].text,project:myProject._id})%>')">edit</button>
+                                    <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:commentDelete,value:myProject.comments[i].text,project:myProject._id})%>')">delete</button>
+                                    <!--<a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a> -->
+                                    <!-- <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/delete" %> >delete</a> -->
                                 <%}
                             }%>
                             <!-- <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a> -->
@@ -89,7 +90,7 @@
         <div class=popup_commentblock>
             <form id="comment_form_form" target="_self" method="POST">
               <h1 id="comment_form_label">Weet je zeker dat je dit project wil verwijderen?</h1>
-              <input id="comment_form_input" class="hidden" type="text">
+              <input id="comment_form_input" name="text" class="hidden" type="text">
               <button id="comment_form_button_left" type="button" onclick="hideCommentForm()">Annuleren</button>
               <button id="comment_form_button_right" type="submit"></button>
             </form>
@@ -148,7 +149,12 @@
     function showCommentForm(selectedComment){
         // in de vorm van object.id, object.question (create,edit of delete), object.value
         getText(selectedComment.question);
-        commentFormForm.action= "./"+ selectedComment.project + "/" + selectedComment.id + "/" +selectedComment.question;
+        if(selectedComment.question==="create"){
+            commentFormForm.action = "./" + selectedComment.project + "/add"; 
+        }
+        else{
+            commentFormForm.action= "./"+ selectedComment.project + "/" + selectedComment.id + "/" +selectedComment.question;
+        }
         commentFormButtonRight.innerText = formButtonText;
         commentFormLabel.innerText = formQuestionText;
         console.log(formQuestionText);

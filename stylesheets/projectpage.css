@@ -632,12 +632,13 @@ Full project page layout General
         top:10px;
         width: 80px;
         height: 40px;
-        background-color: green;
+        background-color: rgba(0, 128, 0, 0);
     }
 
     .edit_container button{
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
+        margin: 1px;
     }
 
 
@@ -844,6 +845,11 @@ Full project page layout General
         border-top-right-radius: 10px;
     }
 
+    .commentblocktitle p{
+        font-size: 30px;
+        font-weight: bolder;
+    }
+
     .commentblock a{
         display: inline-block;
         padding: 10px 15px;
@@ -853,6 +859,18 @@ Full project page layout General
         text-decoration: none;
         
     }
+
+    .commentblock button{
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: rgb(9, 148, 125);
+        background-color: rgb(236, 130, 69);
+        background-color: rgb(209, 202, 201);
+        color: #050505;
+        text-decoration: none;
+        font-weight: bold;
+        
+    } 
 
     .comment_single{
         padding: 8px;

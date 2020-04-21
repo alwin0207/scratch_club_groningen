@@ -59,18 +59,27 @@ router.get("/fullproject/:id", function(req, res){
         }
         else{
             if (req.isAuthenticated()){
-                User.findById(req.user._id, function(err, currentUser){
-                    if(err){
-                        console.log(err);
-                    }
-                    else{
-                        var userCommentList = currentUser.comments;
-                        res.render("fullproject_v1_3.ejs",{myProject: foundProject, showCreateProject: true, userCommentList:userCommentList}); 
-                    }
-                });
+                var showExtra = false;
+                if("" + req.user._id === ""+foundProject.user._id){
+                    showExtra = true;
+                }
+                else{
+                    showExtra = false;
+                }
+                
+                    User.findById(req.user._id, function(err, currentUser){
+                        if(err){
+                            console.log(err);
+                        }
+                        else{
+                            var userCommentList = currentUser.comments;
+                            res.render("fullproject_v1_3.ejs",{myProject: foundProject, showCreateProject: showExtra, userCommentList:userCommentList}); 
+                        }
+                    });
+                
             }
             else{
-                res.render("fullproject_v1_3.ejs",{myProject: foundProject, showCreateProject: true, userCommentList: [""]}); 
+                res.render("fullproject_v1_3.ejs",{myProject: foundProject, showCreateProject: showExtra, userCommentList: [""]}); 
             }
         }
     });
