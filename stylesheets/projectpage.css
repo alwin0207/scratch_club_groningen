@@ -1194,7 +1194,6 @@ Popup forms
 .popup_formblock form{
     height: 55%;
     width: 90%;
-    background-color: purple;
     background-color: rgb(116, 154, 236);
     border-bottom-left-radius: 23px;
     border-bottom-right-radius: 23px;
@@ -1232,7 +1231,6 @@ Popup forms
     grid-row: 3;
     height: 300px;
     border-radius: 15px;
-    background-color: rgb(50, 143, 250);
     background-color: rgb(116, 154, 236);
 
 }
@@ -1286,7 +1284,6 @@ Popup forms
     grid-row: 3;
     height: 300px;
     border-radius: 15px;
-    background-color: rgb(50, 143, 250);
     background-color: rgb(116, 154, 236);
 
 }

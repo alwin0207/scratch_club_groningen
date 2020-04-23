@@ -6,6 +6,7 @@
         <div class="titleblock">    
             <h1> Roots </h1>
         </div>
+
         <div class="userinfo">
             <div class=userinfo_background>
                 <img src="https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
@@ -17,10 +18,12 @@
                 <h2> <%=myProject.name%> </h2>
                 <p>Hallo, Mijn naam is Alwin en dit is een placeholdertekst</p>
             </div>
-        </div>    
+        </div>
+
         <div class="imagecontainer game_icon">
             <img scr= <%= myProject.scrImage%> >
         </div>
+
         <div class="projectinfo">
             <h3><%= myProject.scrProjectTheme%></h3>
             <h1><%= myProject.scrProjectName%></h1>
@@ -34,10 +37,12 @@
                 <%}%>
             </div>
         </div>
+
         <div class="main_text">
             <h1>Hier komt een titel</h1>
             <p>Hier komt alle uitleg en een tekstvak</p>
         </div>
+
         <div class="commentblock">
             <div class="commentblocktitle left_right_devider">
                 <p>Comments</p>
@@ -46,40 +51,34 @@
             </div>
             <% for (i=0; i<myProject.comments.length; i++){ %>
                 <div class="comment_single grid_c">
-                    
-                        <div class="author_avatar">
-
-                        </div>
-                        <div class="author_info">
-                            <h3><%= myProject.comments[i].author %></h3>    
-                            <p><%= myProject.comments[i].author %></p>
-                        </div>
-                        <div class="comment_content">
-                            <p>Comment: <%= myProject.comments[i].text %></p>
-                        </div>
-                        <div class="comment_edit_delete">
-                            <% for (j=0; j<userCommentList.length; j++){
-                                if (("" + myProject.comments[i]._id) === ("" + userCommentList[j]._id)){ 
-                                    
-                                    var edit = "edit";
-                                    var commentDelete = "delete";
-            
-                                    %>
-                                    <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:edit,value:myProject.comments[i].text,project:myProject._id})%>')">edit</button>
-                                    <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:commentDelete,value:myProject.comments[i].text,project:myProject._id})%>')">delete</button>
-                                    <!--<a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a> -->
-                                    <!-- <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/delete" %> >delete</a> -->
-                                <%}
-                            }%>
-                            <!-- <a href=<%="./"+ myProject.id + "/" + myProject.comments[i]._id + "/edit" %> >edit</a> -->
-                        </div>
+                    <div class="author_avatar">
+                    </div>
+                    <div class="author_info">
+                        <h3><%= myProject.comments[i].author %></h3>    
+                        <p><%= myProject.comments[i].author %></p>
+                    </div>
+                    <div class="comment_content">
+                        <p>Comment: <%= myProject.comments[i].text %></p>
+                    </div>
+                    <div class="comment_edit_delete">
+                        <% for (j=0; j<userCommentList.length; j++){
+                            if (("" + myProject.comments[i]._id) === ("" + userCommentList[j]._id)){ 
+                                
+                                var edit = "edit";
+                                var commentDelete = "delete";
+        
+                                %>
+                                <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:edit,value:myProject.comments[i].text,project:myProject._id})%>')">edit</button>
+                                <button type="button" onclick= "showMyCommentForm('<%=JSON.stringify({id:userCommentList[j]._id,question:commentDelete,value:myProject.comments[i].text,project:myProject._id})%>')">delete</button>
+                            <%}
+                        }%>
+                    </div>
                 </div>
-                <% }
-            %>
-            
+            <% } %>
         </div>
     </div>
 </div>
+
 <!-- Pas op work in progress-->
 
     <!-- In deze div komt een shell van mijn form. De data en locatie van de post worden meegestuurt naar het script -->
