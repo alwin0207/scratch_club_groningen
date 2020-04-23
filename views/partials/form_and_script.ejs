@@ -1,6 +1,5 @@
 <div id="projectform" class="hidden">
     <div class="popup_background" onclick="hideForm()">
-            
     </div>
     <div class="popup_formblock"> 
         <div class="formheader"></div>
@@ -40,8 +39,10 @@
                 <button id="prev_button" type="button" onclick="prevTab()">vorige</button>
                 <button id="next_button" type="button" onclick="nextTab()">volgende</button>
             </form>
+        </div>
     </div>
 </div>
+
 <div id="destroy_project" class="hidden">
     <div class="popup_background" onclick="hideDestroy()">
 
@@ -54,6 +55,7 @@
         </form>
     </div>  
 </div>
+
 <script> 
     var myForm = document.getElementById("projectform");
     var myDestroy = document.getElementById("destroy_project")
@@ -85,15 +87,14 @@
             tabs[(tabCount+1)].classList.remove("hide");
             tabs[(tabCount+1)].classList.add("show");
             tabCount++;
-            updateTabNr()
+            updateTabNr();
             if(tabCount === (tabs.length-1)){
                 submitSwitch();
             }
         }
         else{
-            console.log("lasttab");
             nextButton.type="submit";
-    }
+        }
     }
 
     function prevTab(){
@@ -106,8 +107,7 @@
             updateTabNr();
             nextSwitch();
         }
-        else{console.log("firsttab");}
-        console.log(tabCount);
+        else{}
     }
 
     function showDestroy(){

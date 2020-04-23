@@ -10,6 +10,7 @@
         <a class="buttonlink" href="/addform">Deel je project</a>
     </div>
 </div>
+
 <div id="projectscontainer" class="grid_a">
     <div class="project_theme_title">
         <h1>De projecten</h1>
@@ -19,14 +20,11 @@
         <ul>
             <% for (i=0; i<projectlist.length; i++){ %>
                 <li><a href="#nothing"><%= projectlist[i].name %></a></li>
-            <%}
-            %>
+            <%}%>
         </ul>
     </div>
-<% for (i=0; i<projectlist.length; i++){%>
+    <% for (i=0; i<projectlist.length; i++){%>
         <%- include("partials/projectblock", {project: projectlist[i], itemnr: i})%>  
-    <%}
-%>
+    <%}%>
 </div>
-<a class="newbutton" href="#kdkkdk"></a>
 <%- include("partials/footer") %>

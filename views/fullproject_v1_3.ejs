@@ -79,103 +79,12 @@
     </div>
 </div>
 
-<!-- Pas op work in progress-->
-
-    <!-- In deze div komt een shell van mijn form. De data en locatie van de post worden meegestuurt naar het script -->
-    <div id="comment_form_general" class="hidden">
-        <div class="popup_background" onclick="hideCommentForm()">
-    
-        </div>
-        <div class=popup_commentblock>
-            <form id="comment_form_form" target="_self" method="POST">
-              <h1 id="comment_form_label">Weet je zeker dat je dit project wil verwijderen?</h1>
-              <input id="comment_form_input" name="text" class="hidden" type="text">
-              <button id="comment_form_button_left" type="button" onclick="hideCommentForm()">Annuleren</button>
-              <button id="comment_form_button_right" type="submit"></button>
-            </form>
-        </div>  
-    </div>
-
-<!-- Pas op work in progress (end)-->
+<%- include("partials/comment_popup_form.ejs") %>
 
 <% if (showCreateProject===true){%>
-<%- include("partials/form_and_script.ejs") %>
+    <%- include("partials/form_and_script.ejs") %>
 <%}%>
-<!--Pas op work in progress (kan ook nog als partial)-->
-<script>
-    // Hier moet ik de form opzoeken en de juiste action toevoegen in combinatie met de juiste values aan de hand van de user
-    var commentFormDiv = document.getElementById("comment_form_general");
-    var commentFormForm = document.getElementById("comment_form_form");
-    var commentFormLabel = document.getElementById("comment_form_label");
-    var commentFormInput = document.getElementById("comment_form_input");
-    var commentFormButtonRight = document.getElementById("comment_form_button_right");
 
-    var formQuestionText;
-    var formButtonText;
-    var showInput;
+<%- include("partials/comment_popup_script.ejs")%>
 
-    function showMyInput(theInput){
-        console.log(theInput);
-        var b = JSON.parse(theInput);
-        console.log(b);
-    }
-    function getText(question){
-        switch (question){
-            case "create":
-                formQuestionText= "Schrijf je reactie.";
-                formButtonText= "Maak aan";
-                showInput= true;
-                break;
-            case "edit":
-                formQuestionText= "Pas je reactie aan.";
-                formButtonText= "Pas aan";
-                showInput=true;
-                break;
-            case "delete":
-                formQuestionText= "Wil je deze reactie verwijderen?";
-                formButtonText= "Verwijder";
-                showInput=false;
-                break;
-        }
-    }
-
-    function showMyCommentForm(input){
-        var output = JSON.parse(input);
-        console.log(output);
-        showCommentForm(output);
-    }
-
-    function showCommentForm(selectedComment){
-        // in de vorm van object.id, object.question (create,edit of delete), object.value
-        getText(selectedComment.question);
-        if(selectedComment.question==="create"){
-            commentFormForm.action = "./" + selectedComment.project + "/add"; 
-        }
-        else{
-            commentFormForm.action= "./"+ selectedComment.project + "/" + selectedComment.id + "/" +selectedComment.question;
-        }
-        commentFormButtonRight.innerText = formButtonText;
-        commentFormLabel.innerText = formQuestionText;
-        console.log(formQuestionText);
-
-        if (selectedComment.question==="edit"){
-            commentFormInput.value=selectedComment.value;
-        }
-        else{
-            commentFormInput.value="";
-        }
-        if(showInput){
-            commentFormInput.className="show";
-        }
-        else{
-            commentFormInput.className="hide";
-        }
-        commentFormDiv.className= "revealed";
-        
-    }
-    function hideCommentForm(){
-        commentFormDiv.className= "hidden";
-    }
-</script>
-<!--Pas op work in progress (end)-->
 <%- include("partials/footer") %>

@@ -1,0 +1,75 @@
+<script>
+    // Hier moet ik de form opzoeken en de juiste action toevoegen in combinatie met de juiste values aan de hand van de user
+    var commentFormDiv = document.getElementById("comment_form_general");
+    var commentFormForm = document.getElementById("comment_form_form");
+    var commentFormLabel = document.getElementById("comment_form_label");
+    var commentFormInput = document.getElementById("comment_form_input");
+    var commentFormButtonRight = document.getElementById("comment_form_button_right");
+
+    var formQuestionText;
+    var formButtonText;
+    var showInput;
+
+    function showMyInput(theInput){
+        console.log(theInput);
+        var b = JSON.parse(theInput);
+        console.log(b);
+    }
+    function getText(question){
+        switch (question){
+            case "create":
+                formQuestionText= "Schrijf je reactie.";
+                formButtonText= "Maak aan";
+                showInput= true;
+                break;
+            case "edit":
+                formQuestionText= "Pas je reactie aan.";
+                formButtonText= "Pas aan";
+                showInput=true;
+                break;
+            case "delete":
+                formQuestionText= "Wil je deze reactie verwijderen?";
+                formButtonText= "Verwijder";
+                showInput=false;
+                break;
+        }
+    }
+
+    function showMyCommentForm(input){
+        var output = JSON.parse(input);
+        console.log(output);
+        showCommentForm(output);
+    }
+
+    function showCommentForm(selectedComment){
+        // in de vorm van object.id, object.question (create,edit of delete), object.value
+        getText(selectedComment.question);
+        if(selectedComment.question==="create"){
+            commentFormForm.action = "./" + selectedComment.project + "/add"; 
+        }
+        else{
+            commentFormForm.action= "./"+ selectedComment.project + "/" + selectedComment.id + "/" +selectedComment.question;
+        }
+        commentFormButtonRight.innerText = formButtonText;
+        commentFormLabel.innerText = formQuestionText;
+        console.log(formQuestionText);
+
+        if (selectedComment.question==="edit"){
+            commentFormInput.value=selectedComment.value;
+        }
+        else{
+            commentFormInput.value="";
+        }
+        if(showInput){
+            commentFormInput.className="show";
+        }
+        else{
+            commentFormInput.className="hide";
+        }
+        commentFormDiv.className= "revealed";
+        
+    }
+    function hideCommentForm(){
+        commentFormDiv.className= "hidden";
+    }
+</script>
