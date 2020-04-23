@@ -18,29 +18,30 @@ var commentSchema = new mongoose.Schema({
 
 commentSchema.pre('deleteMany', function(next) {
 
-  var myArray=this.getQuery()._id["$in"];
-	User.updateMany({
-    comments: {$in: myArray}
-  },
-  {
-    $pull: {comments: {$in: myArray}}
-  }, function (err, removedcomments){
-    if (err){
-      console.log(err);
-      next()
+  var myArray = this.getQuery()._id["$in"];
+
+	User.updateMany(
+    {
+      comments: {$in: myArray}
+    },
+    {
+      $pull: {comments: {$in: myArray}}
+    }, 
+    function (err, removedcomments){
+      if (err){
+        console.log(err);
+        next()
+      }
+      else{
+        console.log("removed from user");
+        console.log(removedcomments);
+        next();
+      }
     }
-    else{
-      console.log("removed from user");
-      console.log(removedcomments);
-      next();
-    }
-  });  
+  );  
 });
 
 commentSchema.pre('deleteOne', function(next) {
-  var myQuery = this.getQuery();
-  console.log(myQuery);
-  console.log("hallo, delete one wordt aangeroepen")
   User.updateOne({_id: this.getQuery().user._id}, {$pull: {comments: this.getQuery()._id}}, function(err, updatedfilesa){
     if(err){
       console.log(err);
@@ -48,7 +49,6 @@ commentSchema.pre('deleteOne', function(next) {
     }
     else{
       console.log(updatedfilesa);
-      console.log(myQuery);
      next();
     }
   }); 
