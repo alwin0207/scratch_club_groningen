@@ -1,14 +1,12 @@
 <%- include("partials/header") %>
 <%- include("partials/navbar") %>
 
-<div class="form_loginstyle"> <!--Dit is niet de goede stijl maar is tijdelijk !!!!!! -->
+<div class="form_loginstyle">
     <div class="formblock">
         <form target="_self" method="POST">
             <label for="comment">Comment:</label>
             <input id="comment" name="text" type="text" value="<%=myComment.text%>"> <br>
             <p>Author: <strong>You</strong>(<%= currentUser.username %>)</p>
-        <!--    <label for="author">Author:</label>
-            <input id="author" name="author" type="text"><br> -->
             <button>Dit is een button</button> 
         </form>
     </div>
