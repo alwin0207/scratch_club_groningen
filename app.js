@@ -42,7 +42,6 @@ passport.deserializeUser(User.deserializeUser());
 //... adding user info to all routes ...
 app.use(function(req,res,next){
     res.locals.currentUser=req.user;
-    console.log(res.locals.currentUser);
     next();
 });
 
@@ -56,19 +55,9 @@ app.use(projectRoutes);
 app.use(commentRoutes)
 
 ////////////////////////////////////////////////////////////////////////////////////
-// ......------ Middelware (check if visitor is logged in)------......
-
-function isLoggedIn(req, res, next){
-    if (req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
-
-
+// ......------ Listnening to server------......
 ////////////////////////////////////////////////////////////////////////////////////
 
-/* ------ Start Listening to server ------ */
 app.listen(3000, function(){
     console.log("scratch server is listening");
 });
