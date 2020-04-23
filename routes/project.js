@@ -34,14 +34,14 @@ router.get("/projectspage", function(req, res){
     // ... reading projects from database and rendering those projects ...
     ScrProject.find(function (err, scrProjects) {
         if (err) return console.error(err);
-        if (req.isAuthenticated()){  // update: added authentication check for diverent content. Now the original link is sending to the original path where isAuthenticated middleware kicks in therefore never sending you to that page.
+        if (req.isAuthenticated()){
             res.render("projectspage_v1_2_test.ejs", {
-            projectlist: scrProjects, showCreateProject: true
+                projectlist: scrProjects, showCreateProject: true
             });
         }
         else{
             res.render("projectspage_v1_2_test.ejs", {
-            projectlist: scrProjects, showCreateProject: false
+                projectlist: scrProjects, showCreateProject: false
             });
         }
     });
@@ -58,24 +58,24 @@ router.get("/fullproject/:id", function(req, res){
             console.log(err);
         }
         else{
-            if (req.isAuthenticated()){
+            if (req.isAuthenticated()){ // check if user is logged in (see if there is a need to search for owned comments)
                 var showExtra = false;
-                if("" + req.user._id === ""+foundProject.user._id){
+                if("" + req.user._id === ""+foundProject.user._id){ // check if user is owner project
                     showExtra = true;
                 }
                 else{
                     showExtra = false;
                 }
                 
-                    User.findById(req.user._id, function(err, currentUser){
-                        if(err){
-                            console.log(err);
-                        }
-                        else{
-                            var userCommentList = currentUser.comments;
-                            res.render("fullproject_v1_3.ejs",{myProject: foundProject, showCreateProject: showExtra, userCommentList:userCommentList}); 
-                        }
-                    });
+                User.findById(req.user._id, function(err, currentUser){ 
+                    if(err){
+                        console.log(err);
+                    }
+                    else{
+                        var userCommentList = currentUser.comments;
+                        res.render("fullproject_v1_3.ejs",{myProject: foundProject, showCreateProject: showExtra, userCommentList:userCommentList}); 
+                    }
+                });
                 
             }
             else{
@@ -89,7 +89,7 @@ router.get("/fullproject/:id", function(req, res){
 // Create Project routes
 //================================================================================
 
-// ------ Get ------ //
+// ------ Get ------ // (old route)
 
 router.get("/addform", isLoggedIn, function(req, res){
     res.render("addform.ejs");
@@ -122,7 +122,7 @@ router.post("/add_projectb", isLoggedIn, function(req, res){
                     console.log(err);
                     return res.redirect("/")
                 }
-                else{
+                else{ // add project reference to user 
                     myUser.projects.push(scrProject);
                     myUser.save(function(err, foundProject){
                         if (err){
@@ -139,16 +139,11 @@ router.post("/add_projectb", isLoggedIn, function(req, res){
     });
 });
 
-router.get("/mytest", function(req, res){
-    var userLoggedIn = true;
-    res.render("popuptest.ejs", {userLoggedIn:userLoggedIn});
-});
-
 //================================================================================
 // Edit Project routes
 //================================================================================
 
-// ------ Get ------ //
+// ------ Get ------ // (old route)
 
 router.get("/fullproject/:id/edit", isLoggedIn, function(req, res){
     ScrProject.findById(req.params.id, function(err, foundProject){
@@ -211,6 +206,8 @@ router.post("/fullproject/:id/edit", isLoggedIn, function(req, res){
 // Delete Project routes  (nog aanpassen naar project)
 //================================================================================
 
+// ------ Get ------ // (old route)
+
 router.get("/fullproject/:id/delete", isLoggedIn, function(req, res){
     ScrProject.findById(req.params.id, function(err, foundProject){
         if (err){
@@ -236,16 +233,14 @@ router.post("/fullproject/:id/delete", isLoggedIn, function(req, res){
             console.log(err);
             return res.redirect("/");
         }
-        else{
+        else{ // check if project is owned
             if((""+req.user._id)===(""+foundProject.user)){
                 ScrProject.deleteOne(foundProject).exec(function(err, deletedProject){
-                    console.log(foundProject);
-                    console.log(deletedProject);
                     if (err){
                         console.log(err);
                         res.redirect("/");
                     }
-                    else{
+                    else{ // pull project from user. Comments are deleted by middleware
                         User.update({_id: foundProject.user}, {$pull: {projects: foundProject._id }}, function (err, projectsAffected) {
                             console.log(projectsAffected);
                             if (err){                                            
@@ -274,8 +269,6 @@ function isLoggedIn(req, res, next){
     res.redirect("/login");
 }
 
-
-//User.updateMany({user: {$in: foundProject.comments}}, {$pull: {comments: {_id: {$in: foundProject.comments}}}}, function(err, otherComments){});
 
 
 
