@@ -7,7 +7,7 @@ var scrProjectSchema = new mongoose.Schema({
    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
-    },
+   },
    name: String,
    age: Number,
    scrProjectName: String,
@@ -16,10 +16,9 @@ var scrProjectSchema = new mongoose.Schema({
    scrProjectDes: String,
    scrProjectTheme: String,
    comments: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Comment"
-      }
-   ]
+     type: mongoose.Schema.Types.ObjectId,
+     ref: "Comment"
+   }]
 });
 
 scrProjectSchema.pre('deleteOne' ,function(next) {
